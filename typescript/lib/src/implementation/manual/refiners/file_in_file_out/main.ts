@@ -1,6 +1,6 @@
 import * as pt from 'pareto-core/dist/assign'
 import * as pi from 'pareto-core/dist/interface'
-import p_iterate from 'pareto-core/dist/_p_iterate'
+import p_iterate from 'pareto-core/dist/specials/iterate'
 
 
 //data types

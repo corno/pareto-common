@@ -1,4 +1,4 @@
-import * as pci from 'pareto-core/dist/command_interface'
+import * as p_ci from 'pareto-core/dist/command/interface'
 
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
 import * as commands_pareto_stream from "pareto-stream/dist/interface/commands"
@@ -9,7 +9,7 @@ import * as d_prose_serialize from "pareto-fountain-pen/dist/interface/to_be_gen
 
 export namespace procedures {
 
-    export type file_to_file = pci.Command_Procedure<
+    export type file_to_file = p_ci.Command_Procedure<
         resources_pareto.resources.commands.main,
         null,
         {
@@ -22,7 +22,7 @@ export namespace procedures {
         }
     >
 
-    export type stream_to_stream = pci.Command_Procedure<
+    export type stream_to_stream = p_ci.Command_Procedure<
         resources_pareto.resources.commands.main,
         null,
         {
