@@ -1,5 +1,6 @@
 import * as p_ from 'pareto-core/dist/command'
 import * as p_t from 'pareto-core/dist/assign'
+import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 import * as signatures from "../../../interface/commands"
 
@@ -14,6 +15,7 @@ import * as t_fp_to_text from "pareto-fountain-pen/dist/implementation/manual/tr
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 
 export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
@@ -43,9 +45,9 @@ export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
                             ($v) => [
                                 $c['write to stdout'].execute(
                                     {
-                                        'data': t_fp_to_text.Paragraph(
+                                        'data': p_text_from_list(
                                             $v.data,
-                                            $s
+                                            ($) => $
                                         )
                                     },
                                     ($): d_stream_to_stream.Error => ['could not write to stdout', null],

@@ -1,10 +1,10 @@
 import * as d_prose from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_text from "pareto-fountain-pen/dist/interface/generated/liana/schemas/text/data"
-import * as d_path from "pareto-resources/dist/interface/generated/liana/schemas/fs_unrestricted_path/data"
+import * as d_list_of_characters from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
 
 export type Result = {
-    'data': d_prose.Paragraph
+    'data': d_list_of_characters.List_of_Characters
 }
 
 export type Error = d_prose.Phrase

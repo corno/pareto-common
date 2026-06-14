@@ -11,7 +11,7 @@ export namespace procedures {
 
     export type file_to_file = pci.Command_Procedure<
         resources_pareto.resources.commands.main,
-        d_prose_serialize.Parameters,
+        null,
         {
             'read file': resources_pareto.filesystem_unrestricted.queries.read_file
             'process data': resources.queries.process_file_data, 
@@ -24,7 +24,7 @@ export namespace procedures {
 
     export type stream_to_stream = pci.Command_Procedure<
         resources_pareto.resources.commands.main,
-        d_prose_serialize.Parameters,
+        null,
         {
             'get instream data': queries_pareto_stream.queries.get_instream_data,
             'process data': resources.queries.process_stream_data, 
