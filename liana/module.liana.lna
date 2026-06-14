@@ -1,0 +1,223 @@
+(
+    `omit (de)serializer`: true
+    `schema tree`: | `set` {
+        'json with guaranteed unique keys': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'Text Value': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                    'Approximation': (
+                        `type`: | `number` (
+                            `precision`: | `approximation` (
+                                `significant digits`: 16
+                            )
+                        )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Document': (
+                    `root value`: | `component` (
+                        `type`: | `internal` 'Value'
+                        `results`: _
+                    )
+                )
+                'Value': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'array': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Value'
+                                        `results`: _
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'object': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `dictionary` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Value'
+                                        `results`: _
+                                    )
+                                )
+                            )
+                            'number': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `state` (
+                                    `options`: {
+                                        'integer': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'Integer'
+                                        )
+                                        'float': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'Approximation'
+                                        )
+                                    }
+                                    `results`: _
+                                )
+                            )
+                            'string': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `text` | `global` 'Text Value'
+                            )
+                            'boolean': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `simple` | `global` 'boolean'
+                            )
+                            'null': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+        'json without guaranteed unique keys': | `schema` (
+            `schema imports`: {}
+            `resolver imports`: {}
+            `globals`: (
+                `complexity`: | `unconstrained` ~
+                `text types`: {
+                    'Text Value': (
+                        `type`: | `single line` ~
+                        `link`: | `no` ~
+                    )
+                }
+                `simple types`: {
+                    'Integer': (
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
+                        )
+                    )
+                    'Approximation': (
+                        `type`: | `number` (
+                            `precision`: | `approximation` (
+                                `significant digits`: 16
+                            )
+                        )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
+                    )
+                }
+            )
+            `modules`: {
+                'Document': (
+                    `root value`: | `component` (
+                        `type`: | `internal` 'Value'
+                        `results`: _
+                    )
+                )
+                'Value': (
+                    `root value`: | `state` (
+                        `options`: {
+                            'array': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `component` (
+                                        `type`: | `internal` 'Value'
+                                        `results`: _
+                                    )
+                                    `results`: _
+                                )
+                            )
+                            'object': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `list` (
+                                    `value`: | `group` {
+                                        'key': (
+                                            `description`: _
+                                            `value`: | `text` | `global` 'Text Value'
+                                        )
+                                        'value': (
+                                            `description`: _
+                                            `value`: | `component` (
+                                                `type`: | `internal` 'Value'
+                                                `results`: _
+                                            )
+                                        )
+                                    }
+                                    `results`: _
+                                )
+                            )
+                            'number': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `state` (
+                                    `options`: {
+                                        'integer': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'Integer'
+                                        )
+                                        'float': (
+                                            `constraints`: _
+                                            `description`: _
+                                            `value`: | `simple` | `global` 'Approximation'
+                                        )
+                                    }
+                                    `results`: _
+                                )
+                            )
+                            'string': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `text` | `global` 'Text Value'
+                            )
+                            'boolean': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `simple` | `global` 'boolean'
+                            )
+                            'null': (
+                                `constraints`: _
+                                `description`: _
+                                `value`: | `nothing` ~
+                            )
+                        }
+                        `results`: _
+                    )
+                )
+            }
+            `complexity`: | `unconstrained` ~
+        )
+    }
+)
