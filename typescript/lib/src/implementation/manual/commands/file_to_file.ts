@@ -31,7 +31,6 @@ export const $$: signatures.procedures.file_to_file = p_.command_procedure(
                                     return ['file in file out', ['reading file', $]]
                                 }
                             ),
-                            ($, abort) => $,
                             ($v) => [
 
                                 p_.query(
@@ -44,7 +43,6 @@ export const $$: signatures.procedures.file_to_file = p_.command_procedure(
                                             return ['processing', $]
                                         }
                                     ),
-                                    ($, abort) => $,
                                     ($v) => [
                                         $c['write file'].execute(
                                             {

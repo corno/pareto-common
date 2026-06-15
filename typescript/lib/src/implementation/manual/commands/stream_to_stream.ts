@@ -23,7 +23,6 @@ export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
                         null,
                         ($): d_stream_to_stream.Error => ['could not read instream', null],
                     ),
-                    ($, abort) => $,
                     ($v) => [
 
 
@@ -36,7 +35,6 @@ export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
                                     return ['deserialization failed', $]
                                 }
                             ),
-                            ($, abort) => $,
                             ($v) => [
                                 $c['write to stdout'].execute(
                                     {
