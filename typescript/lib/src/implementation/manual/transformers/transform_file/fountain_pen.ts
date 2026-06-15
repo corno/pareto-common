@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core/dist/implementation/transformer'
 
 //data types
-import * as d_in from "../../../../interface/to_be_generated/file_to_file"
+import * as d_in from "../../../../interface/data/file_to_file"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 //dependencies

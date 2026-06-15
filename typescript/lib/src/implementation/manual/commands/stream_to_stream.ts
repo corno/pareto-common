@@ -6,7 +6,7 @@ import * as signatures from "../../../interface/commands"
 
 //data types
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
-import * as d_stream_to_stream from "../../../interface/to_be_generated/stream_to_stream"
+import * as d_stream_to_stream from "../../../interface/data/stream_to_stream"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"

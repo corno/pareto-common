@@ -1,7 +1,7 @@
 import * as p_qi from 'pareto-core/dist/interface/query'
 
-import * as d_process_file_data from "./to_be_generated/process_file_data"
-import * as d_process_stream_data from "./to_be_generated/process_stream_data"
+import * as d_process_file_data from "./data/process_file_data"
+import * as d_process_stream_data from "./data/process_stream_data"
 
 export namespace queries {
 

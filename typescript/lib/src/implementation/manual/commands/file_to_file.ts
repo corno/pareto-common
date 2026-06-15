@@ -4,7 +4,7 @@ import * as signatures from "../../../interface/commands"
 
 //data types
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
-import * as d_file_to_file from "../../../interface/to_be_generated/file_to_file"
+import * as d_file_to_file from "../../../interface/data/file_to_file"
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main"
