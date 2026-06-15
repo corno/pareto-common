@@ -1,5 +1,5 @@
-import * as p_ri from 'pareto-core/dist/refiner/interface'
-import p_iterate from 'pareto-core/dist/specials/iterate'
+import * as p_i from 'pareto-core/dist/interface/refiner'
+import p_iterate from 'pareto-core/dist/implementation/specials/iterate'
 
 
 //data types
@@ -9,7 +9,7 @@ import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_ma
 //dependencies
 import * as p_file_in_file_out from "../../productions/file_in_file_out/text"
 
-export const Parameters: p_ri.Refiner<
+export const Parameters: p_i.Refiner<
     d_file_in_file_out.Parameters,
     d_file_in_file_out.Error_x,
     d_main.Parameters

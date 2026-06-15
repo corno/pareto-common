@@ -1,21 +1,16 @@
-import * as p_ from 'pareto-core/dist/command/implementation'
-import * as p_t from 'pareto-core/dist/assign'
-import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+import * as p_ from 'pareto-core/dist/implementation/command'
+import * as p_temp from 'pareto-core/dist/implementation/transformer'
+import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
 import * as signatures from "../../../interface/commands"
 
 //data types
 import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
-import * as d_fp from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_stream_to_stream from "../../../interface/to_be_generated/stream_to_stream"
-
-//dependencies
-import * as t_fp_to_text from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/text"
-
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
-import _p_list_from_text from 'pareto-core/dist/specials/list_from_text'
+import _p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 
 export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
@@ -65,12 +60,12 @@ export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
                         'message': sh.pg.sentences([
                             sh.sentence([
 
-                                p_t.decide.state($, ($) => {
+                                p_temp.decide.state($, ($) => {
                                     switch ($[0]) {
-                                        case 'could not read instream': return p_t.ss($, ($) => sh.ph.literal("could not read instream"))
-                                        case 'deserialization failed': return p_t.ss($, ($) => $)
-                                        case 'could not write to stdout': return p_t.ss($, ($) => sh.ph.literal("could not write to stdout"))
-                                        default: return p_t.au($[0])
+                                        case 'could not read instream': return p_temp.ss($, ($) => sh.ph.literal("could not read instream"))
+                                        case 'deserialization failed': return p_temp.ss($, ($) => $)
+                                        case 'could not write to stdout': return p_temp.ss($, ($) => sh.ph.literal("could not write to stdout"))
+                                        default: return p_temp.au($[0])
                                     }
                                 })
                             ])

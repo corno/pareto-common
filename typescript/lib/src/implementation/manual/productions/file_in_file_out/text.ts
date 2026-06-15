@@ -1,4 +1,4 @@
-import * as p_pi from 'pareto-core/dist/production/interface'
+import * as p_pi from 'pareto-core/dist/interface/production'
 
 //data types
 import * as d_file_in_file_out from "../../../../interface/to_be_generated/file_to_file"
