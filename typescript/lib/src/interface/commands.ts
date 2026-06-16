@@ -5,8 +5,6 @@ import * as commands_pareto_stream from "pareto-stream/dist/interface/commands"
 import * as queries_pareto_stream from "pareto-stream/dist/interface/queries"
 import * as resources from "./queries"
 
-import * as d_prose_serialize from "pareto-fountain-pen/dist/interface/to_be_generated/prose_serialize"
-
 export namespace procedures {
 
     export type file_to_file = p_ci.Command_Procedure<
