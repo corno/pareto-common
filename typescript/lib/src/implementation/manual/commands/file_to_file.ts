@@ -79,4 +79,5 @@ export const $$: interface_.procedures.file_to_file = p_.command_procedure(
                 'exit code': 1
             }),
         ),
-    ])
+    ]
+)
