@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/dist/implementation/command'
 
-import * as signatures from "../../../interface/commands"
+import * as interface_ from "../../../interface/commands"
 
 //data types
 import * as d_main from "pareto-resources/dist/interface/data/temp_main"
@@ -14,17 +14,17 @@ import * as t_transform_file_to_fp from "../transformers/transform_file/fountain
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 
-export const $$: signatures.procedures.file_to_file = p_.command_procedure(
+export const $$: interface_.procedures.file_to_file = p_.command_procedure(
     ($d, $s, $q, $c) => [
 
-        p_.handle_error<d_main.Error, d_file_to_file.Error>(
+        p_.s.handle_error<d_main.Error, d_file_to_file.Error>(
             [
 
-                p_.refine(
+                p_.s.refine(
                     (abort) => r_file_in_file_out_from_main.Parameters($d, ($) => abort(['file in file out', ['command line arguments', $]])),
                     ($r) => [
 
-                        p_.query(
+                        p_.s.query(
                             $q['read file'](
                                 $r.in,
                                 ($): d_file_to_file.Error => {
@@ -33,7 +33,7 @@ export const $$: signatures.procedures.file_to_file = p_.command_procedure(
                             ),
                             ($v) => [
 
-                                p_.query(
+                                p_.s.query(
                                     $q['process data'](
                                         {
                                             'path': $r.in,

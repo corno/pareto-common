@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/dist/implementation/command'
 import * as p_temp from 'pareto-core/dist/implementation/transformer'
 import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
 
-import * as signatures from "../../../interface/commands"
+import * as interface_ from "../../../interface/commands"
 
 //data types
 import * as d_main from "pareto-resources/dist/interface/data/temp_main"
@@ -13,12 +13,12 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 import _p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 
-export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
+export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
     ($d, $s, $q, $c) => [
 
-        p_.handle_error<d_main.Error, d_stream_to_stream.Error>(
+        p_.s.handle_error<d_main.Error, d_stream_to_stream.Error>(
             [
-                p_.query(
+                p_.s.query(
                     $q['get instream data'](
                         null,
                         ($): d_stream_to_stream.Error => ['could not read instream', null],
@@ -26,7 +26,7 @@ export const $$: signatures.procedures.stream_to_stream = p_.command_procedure(
                     ($v) => [
 
 
-                        p_.query(
+                        p_.s.query(
                             $q['process data'](
                                 {
                                     'data': $v,
