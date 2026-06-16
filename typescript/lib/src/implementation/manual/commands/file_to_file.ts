@@ -20,7 +20,7 @@ export const $$: signatures.procedures.file_to_file = p_.command_procedure(
         p_.handle_error<d_main.Error, d_file_to_file.Error>(
             [
 
-                p_.refine_without_error_transformation(
+                p_.refine(
                     (abort) => r_file_in_file_out_from_main.Parameters($d, ($) => abort(['file in file out', ['command line arguments', $]])),
                     ($r) => [
 
