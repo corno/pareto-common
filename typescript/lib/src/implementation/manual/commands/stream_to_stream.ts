@@ -5,7 +5,7 @@ import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from
 import * as signatures from "../../../interface/commands"
 
 //data types
-import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
+import * as d_main from "pareto-resources/dist/interface/data/temp_main"
 import * as d_stream_to_stream from "../../../interface/data/stream_to_stream"
 
 //shorthands
