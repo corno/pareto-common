@@ -1,4 +1,4 @@
-import * as p_ci from 'pareto-core/dist/interface/command'
+import * as p_ from 'pareto-core/dist/interface/command'
 
 import * as resources_pareto from "pareto-resources/dist/interface/resources"
 import * as commands_pareto_stream from "pareto-stream/dist/interface/commands"
@@ -7,7 +7,7 @@ import * as resources from "./queries"
 
 export namespace procedures {
 
-    export type file_to_file = p_ci.Command_Procedure<
+    export type file_to_file = p_.Command_Procedure<
         resources_pareto.resources.commands.main,
         null,
         {
@@ -20,7 +20,7 @@ export namespace procedures {
         }
     >
 
-    export type stream_to_stream = p_ci.Command_Procedure<
+    export type stream_to_stream = p_.Command_Procedure<
         resources_pareto.resources.commands.main,
         null,
         {
