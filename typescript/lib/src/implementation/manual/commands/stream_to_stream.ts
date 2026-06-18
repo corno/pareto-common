@@ -10,7 +10,7 @@ import * as d_stream_to_stream from "../../../interface/data/stream_to_stream"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
-import _p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
+import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 
 export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
@@ -58,7 +58,7 @@ export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
                         'message': sh.pg.sentences([
                             sh.sentence([
 
-                                p_temp.decide.state($, ($) => {
+                                p_temp.from.state($).decide(($) => {
                                     switch ($[0]) {
                                         case 'could not read instream': return p_temp.ss($, ($) => sh.ph.literal("could not read instream"))
                                         case 'deserialization failed': return p_temp.ss($, ($) => $)
