@@ -1,5 +1,5 @@
 import * as p_i from 'pareto-core/dist/interface/refiner'
-import p_iterate from 'pareto-core/dist/implementation/specials/iterate'
+import p_iterate from 'pareto-core/dist/implementation/refiner/specials/iterate'
 
 
 //data types
@@ -7,7 +7,7 @@ import * as d_file_in_file_out from "../../../../interface/data/file_to_file"
 import * as d_main from "pareto-resources/dist/interface/data/temp_main"
 
 //dependencies
-import * as p_file_in_file_out from "../../productions/file_in_file_out/text"
+import * as pr_file_in_file_out from "../../productions/file_in_file_out/text"
 
 export const Parameters: p_i.Refiner<
     d_file_in_file_out.Parameters,
@@ -19,8 +19,8 @@ export const Parameters: p_i.Refiner<
         null,
         (iter) => iter.assert_finished(
             () => ({
-                'in': p_file_in_file_out.Path(iter, ($) => abort(['in path', $])),
-                'out': p_file_in_file_out.Path(iter, ($) => abort(['out path', $])),
+                'in': pr_file_in_file_out.Path(iter, ($) => abort(['in path', $])),
+                'out': pr_file_in_file_out.Path(iter, ($) => abort(['out path', $])),
             }),
             {
                 not_finished: ($) => abort(['too many arguments', null]),

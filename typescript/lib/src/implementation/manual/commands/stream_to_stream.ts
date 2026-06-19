@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/dist/implementation/command'
 import * as p_temp from 'pareto-core/dist/implementation/transformer'
-import p_text_from_list from 'pareto-core/dist/implementation/specials/text_from_list'
+import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
 
 import * as interface_ from "../../../interface/commands"
 
@@ -10,7 +10,6 @@ import * as d_stream_to_stream from "../../../interface/data/stream_to_stream"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
-import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
 
 
 export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
