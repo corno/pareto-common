@@ -12,44 +12,47 @@ import * as t_read_file from "pareto-resources/dist/implementation/manual/transf
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Path_Error: p_i.Transformer<d_in.Path_Error, d_out.Phrase> = ($) => p_.from.state($).decide(($) => {
-    switch ($[0]) {
-        case 'missing': return p_.ss($, ($) => sh.ph.literal("missing"))
-        case 'not valid': return p_.ss($, ($) => sh.ph.literal("not valid"))
-        default: return p_.au($[0])
-    }
-})
+export const Path_Error: p_i.Transformer<d_in.Path_Error, d_out.Phrase> = ($) => p_.from.state($).decide(
+    ($) => {
+        switch ($[0]) {
+            case 'missing': return p_.ss($, ($) => sh.ph.literal("missing"))
+            case 'not valid': return p_.ss($, ($) => sh.ph.literal("not valid"))
+            default: return p_.au($[0])
+        }
+    })
 
-export const Error: p_i.Transformer<d_in.Error_x, d_out.Phrase> = ($) => p_.from.state($).decide(($) => {
-    switch ($[0]) {
-        case 'too many arguments': return p_.ss($, ($) => sh.ph.literal("too many arguments"))
-        case 'in path': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("in path: "),
-            Path_Error($)
-        ]))
-        case 'out path': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("out path: "),
-            Path_Error($)
-        ]))
-        default: return p_.au($[0])
-    }
-})
+export const Error: p_i.Transformer<d_in.Error_x, d_out.Phrase> = ($) => p_.from.state($).decide(
+    ($) => {
+        switch ($[0]) {
+            case 'too many arguments': return p_.ss($, ($) => sh.ph.literal("too many arguments"))
+            case 'in path': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("in path: "),
+                Path_Error($)
+            ]))
+            case 'out path': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("out path: "),
+                Path_Error($)
+            ]))
+            default: return p_.au($[0])
+        }
+    })
 
-export const Command_Error: p_i.Transformer<d_in.Command_Error, d_out.Phrase> = ($) => p_.from.state($).decide(($) => {
-    switch ($[0]) {
-        case 'command line arguments': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("error in command line arguments: "),
-            Error($)
-        ]))
-        case 'reading file': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("error reading: "),
-            t_read_file.Error($)
-        ]))
-        case 'deserializing': return p_.ss($, ($) => sh.ph.composed([
-            sh.ph.literal("error deserializing: "),
-            sh.ph.literal($)
-        ]))
-        case 'writing file': return p_.ss($, ($) => sh.ph.literal("error writing file"))
-        default: return p_.au($[0])
-    }
-})
+export const Command_Error: p_i.Transformer<d_in.Command_Error, d_out.Phrase> = ($) => p_.from.state($).decide(
+    ($) => {
+        switch ($[0]) {
+            case 'command line arguments': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("error in command line arguments: "),
+                Error($)
+            ]))
+            case 'reading file': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("error reading: "),
+                t_read_file.Error($)
+            ]))
+            case 'deserializing': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("error deserializing: "),
+                sh.ph.literal($)
+            ]))
+            case 'writing file': return p_.ss($, ($) => sh.ph.literal("error writing file"))
+            default: return p_.au($[0])
+        }
+    })

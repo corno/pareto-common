@@ -57,14 +57,15 @@ export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
                         'message': sh.pg.sentences([
                             sh.sentence([
 
-                                p_temp.from.state($).decide(($) => {
-                                    switch ($[0]) {
-                                        case 'could not read instream': return p_temp.ss($, ($) => sh.ph.literal("could not read instream"))
-                                        case 'deserialization failed': return p_temp.ss($, ($) => $)
-                                        case 'could not write to stdout': return p_temp.ss($, ($) => sh.ph.literal("could not write to stdout"))
-                                        default: return p_temp.au($[0])
-                                    }
-                                })
+                                p_temp.from.state($).decide(
+                                    ($) => {
+                                        switch ($[0]) {
+                                            case 'could not read instream': return p_temp.ss($, ($) => sh.ph.literal("could not read instream"))
+                                            case 'deserialization failed': return p_temp.ss($, ($) => $)
+                                            case 'could not write to stdout': return p_temp.ss($, ($) => sh.ph.literal("could not write to stdout"))
+                                            default: return p_temp.au($[0])
+                                        }
+                                    })
                             ])
                         ]),
                     },
