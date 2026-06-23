@@ -12,7 +12,9 @@ import * as t_read_file from "pareto-resources/dist/implementation/manual/transf
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
-export const Path_Error: p_i.Transformer<d_in.Path_Error, d_out.Phrase> = ($) => p_.from.state($).decide(
+export const Path_Error: p_i.Transformer<
+d_in.Path_Error, d_out.Phrase
+> = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'missing': return p_.ss($, ($) => sh.ph.literal("missing"))
@@ -21,7 +23,9 @@ export const Path_Error: p_i.Transformer<d_in.Path_Error, d_out.Phrase> = ($) =>
         }
     })
 
-export const Error: p_i.Transformer<d_in.Error_x, d_out.Phrase> = ($) => p_.from.state($).decide(
+export const Error: p_i.Transformer<
+d_in.Error_x, d_out.Phrase
+> = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'too many arguments': return p_.ss($, ($) => sh.ph.literal("too many arguments"))
@@ -37,7 +41,9 @@ export const Error: p_i.Transformer<d_in.Error_x, d_out.Phrase> = ($) => p_.from
         }
     })
 
-export const Command_Error: p_i.Transformer<d_in.Command_Error, d_out.Phrase> = ($) => p_.from.state($).decide(
+export const Command_Error: p_i.Transformer<
+d_in.Command_Error, d_out.Phrase
+> = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'command line arguments': return p_.ss($, ($) => sh.ph.composed([
