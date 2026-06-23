@@ -10,7 +10,7 @@ import * as t_read_file from "pareto-resources/dist/implementation/manual/transf
 // import * as s_fp from "pareto-fountain-pen/dist/implementation/manual/schemas/block/serializers"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 export const Path_Error: p_i.Transformer<
 d_in.Path_Error, d_out.Phrase

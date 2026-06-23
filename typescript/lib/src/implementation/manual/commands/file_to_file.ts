@@ -11,7 +11,7 @@ import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main
 import * as t_transform_file_to_fp from "../transformers/transform_file/fountain_pen"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 
 export const $$: interface_.procedures.file_to_file = p_.command_procedure(

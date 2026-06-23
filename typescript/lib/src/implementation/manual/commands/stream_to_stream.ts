@@ -9,7 +9,7 @@ import * as d_main from "pareto-resources/dist/interface/data/temp_main"
 import * as d_stream_to_stream from "../../../interface/data/stream_to_stream"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 
 export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
