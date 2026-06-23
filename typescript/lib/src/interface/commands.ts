@@ -20,6 +20,19 @@ export namespace procedures {
         }
     >
 
+    export type file_to_stream = p_.Command_Procedure<
+        resources_pareto.resources.commands.main,
+        null,
+        {
+            'read file': resources_pareto.filesystem_unrestricted.queries.read_file
+            'process data': resources.queries.process_file_data, 
+        },
+        {
+            'write to stdout': commands_pareto_stream.commands.write_to_stdout
+            'log error': commands_pareto_stream.commands.log_error,
+        }
+    >
+
     export type stream_to_stream = p_.Command_Procedure<
         resources_pareto.resources.commands.main,
         null,
