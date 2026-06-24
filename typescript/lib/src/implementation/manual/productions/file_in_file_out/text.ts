@@ -11,12 +11,12 @@ export const Path: p_pi.Production<
     d_file_in_file_out.Path_Error,
     string,
     null
-> = (iterator, abort) => r_node_path_to_text.Node_Path(
+> = (iterator) => r_node_path_to_text.Node_Path(
     iterator.consume(
         ($) => $,
-        () => abort(['missing', null])
+        () => iterator.abort(['missing', null])
     ),
-    ($) => abort(['not valid', null]),
+    ($) => iterator.abort(['not valid', null]),
     {
         'pedantic': true,
     },
