@@ -18,7 +18,7 @@ export const Parameters: p_i.Refiner<
     return p_iterate(
         $.arguments,
         null,
-        p_.literal.set<d_file_in_stream_out.Error_x>(['too many arguments', null]),
+        () => p_.literal.set<d_file_in_stream_out.Error_x>(['too many arguments', null]),
         abort,
         (iter) => ({
             'in': pr_file_in_stream_out.Path(
