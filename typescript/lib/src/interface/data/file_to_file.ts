@@ -10,15 +10,17 @@ export type Error =
     | ['processing', d_fp.Phrase]
     | ['file in file out', Command_Error]
 
-export type Path_Error =
-    | ['missing', null]
-    | ['not valid', null]
-
 export type Error_x =
-    | ['in path', Path_Error]
-    | ['out path', Path_Error]
+    | ['unexpected', {
+        'expected': Expected,
+    }]
+    | ['invalid source path', null]
+    | ['invalid target path', null]
     | ['too many arguments', null]
 
+export type Expected =
+    | ['source path', null]
+    | ['target path', null]
 
 export type Command_Error =
     | ['command line arguments', Error_x]

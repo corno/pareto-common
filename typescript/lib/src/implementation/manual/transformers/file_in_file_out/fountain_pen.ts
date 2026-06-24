@@ -12,37 +12,30 @@ import * as t_read_file from "pareto-resources/dist/implementation/manual/transf
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
-export const Path_Error: p_i.Transformer<
-d_in.Path_Error, d_out.Phrase
-> = ($) => p_.from.state($).decide(
-    ($) => {
-        switch ($[0]) {
-            case 'missing': return p_.ss($, ($) => sh.ph.literal("missing"))
-            case 'not valid': return p_.ss($, ($) => sh.ph.literal("not valid"))
-            default: return p_.au($[0])
-        }
-    })
-
 export const Error: p_i.Transformer<
-d_in.Error_x, d_out.Phrase
+    d_in.Error_x,
+    d_out.Phrase
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'too many arguments': return p_.ss($, ($) => sh.ph.literal("too many arguments"))
-            case 'in path': return p_.ss($, ($) => sh.ph.composed([
-                sh.ph.literal("in path: "),
-                Path_Error($)
+            case 'invalid source path': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("invalid source path"),
             ]))
-            case 'out path': return p_.ss($, ($) => sh.ph.composed([
-                sh.ph.literal("out path: "),
-                Path_Error($)
+            case 'invalid target path': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("invalid target path"),
+            ]))
+            case 'unexpected': return p_.ss($, ($) => sh.ph.composed([
+                sh.ph.literal("unexpected "),
+                sh.ph.literal("expected:" + $['expected'][0]),
             ]))
             default: return p_.au($[0])
         }
     })
 
 export const Command_Error: p_i.Transformer<
-d_in.Command_Error, d_out.Phrase
+    d_in.Command_Error,
+    d_out.Phrase
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
