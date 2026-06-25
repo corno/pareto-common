@@ -17,44 +17,41 @@ export const Parameters: p_i.Refiner<
 > = ($, abort) => {
     return p_iterate<
         d_file_in_file_out.Parameters,
-        d_file_in_file_out.Error_x,
-        d_file_in_file_out.Expected,
         string,
         null
     >({
         list: $.arguments,
         end_info: null,
-        abort: abort,
         assign: (iterator) => ({
-            'in': iterator.consume(
-                ($) => r_node_path_to_text.Node_Path(
-                    $,
-                    ($) => iterator.abort(['invalid source path', null]),
-                    {
-                        'pedantic': true,
-                    },
+            'in': r_node_path_to_text.Node_Path(
+                iterator.consume.text(
+                    ($) => $,
+                    (end_info) => abort(['unexpected', {
+                        'expected': ['source path', null]
+                    }])
                 ),
-                () => iterator.abort(['unexpected', {
-                    'expected': ['source path', null]
-                }])
+                ($) => abort(['invalid source path', null]),
+                {
+                    'pedantic': false,
+                },
             ),
-            'out': iterator.consume(
-                ($) => r_node_path_to_text.Node_Path(
-                    $,
-                    ($) => iterator.abort(['invalid target path', null]),
-                    {
-                        'pedantic': true,
-                    },
+            'out': r_node_path_to_text.Node_Path(
+                iterator.consume.text(
+                    ($) => $,
+                    (end_info) => abort(['unexpected', {
+                        'expected': ['target path', null]
+                    }])
                 ),
-                () => iterator.abort(['unexpected', {
-                    'expected': ['target path', null]
-                }])
+                ($) => abort(['invalid target path', null]),
+                {
+                    'pedantic': false,
+                },
             ),
         }),
-        create_dangling_item_error: () => p_.literal.set<d_file_in_file_out.Error_x>(['too many arguments', null]),
-        create_expectation_error: (expected, found) => ['unexpected', {
-            'expected': expected
-        }]
+        on_dangling_item: () => abort(['too many arguments', null]),
+        // create_expectation_error: (expected, found) => ['unexpected', {
+        //     'expected': expected
+        // }]
     })
 
 }
