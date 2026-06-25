@@ -24,11 +24,11 @@ export const Parameters: p_i.Refiner<
         end_info: null,
         assign: (iterator) => ({
             'in': r_node_path_to_text.Node_Path(
-                iterator.consume.text(
-                    ($) => $,
-                    (end_info) => abort(['unexpected', {
+                iterator.consume(
+                    ($) => abort(['unexpected', {
                         'expected': ['source path', null]
-                    }])
+                    }]),
+                    ($) => $,
                 ),
                 ($) => abort(['invalid source path', null]),
                 {
