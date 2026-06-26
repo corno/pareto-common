@@ -49,9 +49,6 @@ export const Parameters: p_i.Refiner<
             ),
         }),
         on_dangling_item: () => abort(['too many arguments', null]),
-        // create_expectation_error: (expected, found) => ['unexpected', {
-        //     'expected': expected
-        // }]
     })
 
 }
