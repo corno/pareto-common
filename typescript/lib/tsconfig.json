@@ -9,9 +9,16 @@
         "strict": true,
         "esModuleInterop": true,
         "inlineSourceMap": true,
-        "forceConsistentCasingInFileNames": true
+        "forceConsistentCasingInFileNames": true,
+        "noUnusedLocals": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "allowUnreachableCode": false,
+        "allowUnusedLabels": false
     },
     "include": [
-      "./src"
+        "./src"
     ]
 }

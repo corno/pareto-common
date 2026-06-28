@@ -12,7 +12,7 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
 export const My_Error = ($: d_in.Error): d_out.Phrase => {
     return p_.from.state($).decide(
-        ($): d_out.Phrase => {
+        ($) => {
             switch ($[0]) {
                 case 'processing': return p_.ss($, ($) => sh.ph.composed([
                     sh.ph.literal("processing error: "),
