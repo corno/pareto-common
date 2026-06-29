@@ -1,6 +1,6 @@
 {
   "name": "pareto-common",
-  "version": "0.1.36",
+  "version": "0.1.37",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A TypeScript library for common commands and queries",
