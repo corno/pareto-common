@@ -18,14 +18,14 @@ export const Error: p_i.Transformer<
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'too many arguments': return p_.ss($, ($) => sh.ph.literal("too many arguments"))
-            case 'invalid source path': return p_.ss($, ($) => sh.ph.composed([
+            case 'too many arguments': return p_.option($, ($) => sh.ph.literal("too many arguments"))
+            case 'invalid source path': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("invalid source path"),
             ]))
-            case 'invalid target path': return p_.ss($, ($) => sh.ph.composed([
+            case 'invalid target path': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("invalid target path"),
             ]))
-            case 'unexpected': return p_.ss($, ($) => sh.ph.composed([
+            case 'unexpected': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("unexpected "),
                 sh.ph.literal("expected:" + $['expected'][0]),
             ]))
@@ -39,19 +39,19 @@ export const Command_Error: p_i.Transformer<
 > = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'command line arguments': return p_.ss($, ($) => sh.ph.composed([
+            case 'command line arguments': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("error in command line arguments: "),
                 Error($)
             ]))
-            case 'reading file': return p_.ss($, ($) => sh.ph.composed([
+            case 'reading file': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("error reading: "),
                 t_read_file.Error($)
             ]))
-            case 'deserializing': return p_.ss($, ($) => sh.ph.composed([
+            case 'deserializing': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("error deserializing: "),
                 sh.ph.literal($)
             ]))
-            case 'writing file': return p_.ss($, ($) => sh.ph.literal("error writing file"))
+            case 'writing file': return p_.option($, ($) => sh.ph.literal("error writing file"))
             default: return p_.au($[0])
         }
     })

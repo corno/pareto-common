@@ -14,12 +14,12 @@ export const My_Error = ($: d_in.Error): d_out.Phrase => {
     return p_.from.state($).decide(
         ($) => {
             switch ($[0]) {
-                case 'processing': return p_.ss($, ($) => sh.ph.composed([
+                case 'processing': return p_.option($, ($) => sh.ph.composed([
                     sh.ph.literal("processing error: "),
 
                     $
                 ]))
-                case 'file in stream out': return p_.ss($, ($) => sh.ph.composed([
+                case 'file in stream out': return p_.option($, ($) => sh.ph.composed([
                     sh.ph.literal("file in stream out: "),
                     t_file_in_stream_out_to_fp.Command_Error($)
                 ]))
