@@ -9,7 +9,7 @@ import * as d_file_to_stream from "../../../interface/data/file_to_stream"
 
 //dependencies
 import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/main"
-import * as t_file_to_stream_to_fp from "../transformers/file_to_stream/prose"
+import * as t_file_to_stream_to_prose from "../transformers/file_to_stream/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
@@ -69,7 +69,7 @@ export const $$: interface_.procedures.file_to_stream = p_.command_procedure(
                     {
                         'message': sh.pg.sentences([
                             sh.sentence([
-                                t_file_to_stream_to_fp.My_Error($)
+                                t_file_to_stream_to_prose.My_Error($)
                             ])
                         ]),
                     },

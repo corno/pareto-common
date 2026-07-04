@@ -8,7 +8,7 @@ import * as d_file_to_file from "../../../interface/data/file_to_file"
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main"
-import * as t_transform_file_to_fp from "../transformers/file_to_file/prose"
+import * as t_transform_file_to_prose from "../transformers/file_to_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
@@ -66,7 +66,7 @@ export const $$: interface_.procedures.file_to_file = p_.command_procedure(
                     {
                         'message': sh.pg.sentences([
                             sh.sentence([
-                                t_transform_file_to_fp.My_Error($)
+                                t_transform_file_to_prose.My_Error($)
                             ])
                         ]),
                     },
