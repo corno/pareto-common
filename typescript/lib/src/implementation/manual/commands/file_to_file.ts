@@ -8,7 +8,7 @@ import * as d_file_to_file from "../../../interface/data/file_to_file"
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main"
-import * as t_transform_file_to_fp from "../transformers/file_to_file/fountain_pen"
+import * as t_transform_file_to_fp from "../transformers/file_to_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"

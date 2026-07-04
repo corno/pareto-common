@@ -9,7 +9,7 @@ import * as d_file_to_stream from "../../../interface/data/file_to_stream"
 
 //dependencies
 import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/main"
-import * as t_file_to_stream_to_fp from "../transformers/file_to_stream/fountain_pen"
+import * as t_file_to_stream_to_fp from "../transformers/file_to_stream/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
