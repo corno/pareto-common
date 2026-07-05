@@ -1,13 +1,13 @@
-import * as p_i from 'pareto-core/dist/interface/refiner'
-import p_iterate from 'pareto-core/dist/implementation/refiner/specials/iterate'
+import * as p_i from 'pareto-core/interface/refiner'
+import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
-import * as d_file_in_stream_out from "../../../../interface/data/file_to_stream"
-import * as d_main from "pareto-resources/dist/interface/data/temp_main"
+import * as d_file_in_stream_out from "../../../../interface/data/file_to_stream.js"
+import * as d_main from "pareto-resources/interface/data/temp_main"
 
 //dependencies
-import * as r_node_path_to_text from "pareto-resources/dist/implementation/manual/refiners/path_unrestricted/text"
+import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"
 
 export const Parameters: p_i.Refiner<
     d_file_in_stream_out.Parameters,

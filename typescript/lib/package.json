@@ -1,6 +1,6 @@
 {
   "name": "pareto-common",
-  "version": "0.1.38",
+  "version": "0.1.39",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A TypeScript library for common commands and queries",
@@ -12,6 +12,13 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/corno/pareto-common.git"
+  },
+  "type": "module",
+  "exports": {
+    "./*": {
+      "types": "./dist/*.d.ts",
+      "default": "./dist/*.js"
+    }
   },
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",

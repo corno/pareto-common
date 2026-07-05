@@ -1,11 +1,11 @@
-import * as p_i from 'pareto-core/dist/interface/refiner'
-import p_iterate from 'pareto-core/dist/implementation/refiner/specials/iterate'
+import * as p_i from 'pareto-core/interface/refiner'
+import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
-import * as d_out from "../../../../interface/data/file_to_file"
-import * as d_function from "../../../../interface/data/file_to_file"
-import * as d_in from "pareto-resources/dist/interface/data/temp_main"
+import * as d_out from "../../../../interface/data/file_to_file.js"
+import * as d_function from "../../../../interface/data/file_to_file.js"
+import * as d_in from "pareto-resources/interface/data/temp_main"
 
 export namespace interface_ {
     export type Parameters = p_i.Refiner<
@@ -16,7 +16,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as r_node_path_to_text from "pareto-resources/dist/implementation/manual/refiners/path_unrestricted/text"
+import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"
 
 export const Parameters: interface_.Parameters = ($, abort) => {
     return p_iterate<

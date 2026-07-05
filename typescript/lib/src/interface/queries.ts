@@ -1,7 +1,7 @@
-import * as p_ from 'pareto-core/dist/interface/query'
+import * as p_ from 'pareto-core/interface/query'
 
-import * as d_process_file_data from "./data/process_file_data"
-import * as d_process_stream_data from "./data/process_stream_data"
+import * as d_process_file_data from "./data/process_file_data.js"
+import * as d_process_stream_data from "./data/process_stream_data.js"
 
 export namespace queries {
 

@@ -1,9 +1,9 @@
-import * as p_ from 'pareto-core/dist/interface/command'
+import * as p_ from 'pareto-core/interface/command'
 
-import * as resources_pareto from "pareto-resources/dist/interface/resources"
-import * as commands_pareto_stream from "pareto-stream/dist/interface/commands"
-import * as queries_pareto_stream from "pareto-stream/dist/interface/queries"
-import * as resources from "./queries"
+import * as resources_pareto from "pareto-resources/interface/resources"
+import * as commands_pareto_stream from "pareto-stream/interface/commands"
+import * as queries_pareto_stream from "pareto-stream/interface/queries"
+import * as resources from "./queries.js"
 
 export namespace procedures {
 

@@ -1,18 +1,18 @@
-import * as p_ from 'pareto-core/dist/implementation/command'
-import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
+import * as p_ from 'pareto-core/implementation/command'
+import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import * as interface_ from "../../../interface/commands"
+import * as interface_ from "../../../interface/commands.js"
 
 //data types
-import * as d_main from "pareto-resources/dist/interface/data/temp_main"
-import * as d_file_to_stream from "../../../interface/data/file_to_stream"
+import * as d_main from "pareto-resources/interface/data/temp_main"
+import * as d_file_to_stream from "../../../interface/data/file_to_stream.js"
 
 //dependencies
-import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/main"
-import * as t_file_to_stream_to_prose from "../transformers/file_to_stream/prose"
+import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/main.js"
+import * as t_file_to_stream_to_prose from "../transformers/file_to_stream/prose.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 
 export const $$: interface_.procedures.file_to_stream = p_.command_procedure(

@@ -1,15 +1,15 @@
-import * as p_ from 'pareto-core/dist/implementation/command'
-import * as p_temp from 'pareto-core/dist/implementation/transformer'
-import p_text_from_list from 'pareto-core/dist/implementation/transformer/specials/text_from_list'
+import * as p_ from 'pareto-core/implementation/command'
+import * as p_temp from 'pareto-core/implementation/transformer'
+import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import * as interface_ from "../../../interface/commands"
+import * as interface_ from "../../../interface/commands.js"
 
 //data types
-import * as d_main from "pareto-resources/dist/interface/data/temp_main"
-import * as d_stream_to_stream from "../../../interface/data/stream_to_stream"
+import * as d_main from "pareto-resources/interface/data/temp_main"
+import * as d_stream_to_stream from "../../../interface/data/stream_to_stream.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 
 export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
