@@ -17,7 +17,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_read_file from "pareto-resources/dist/implementation/manual/transformers/read_file/fountain_pen"
+import * as t_read_file from "pareto-resources/dist/implementation/manual/transformers/read_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
