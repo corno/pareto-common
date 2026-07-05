@@ -17,7 +17,7 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 export const $$: interface_.procedures.file_to_file = p_.command_procedure(
     ($d, $s, $q, $c) => [
 
-        p_.s.handle_error<d_main.Error, d_file_to_file.Error>(
+        p_.s.handle_error<d_main.Error, d_file_to_file.Error_yy>(
             [
 
                 p_.s.refine(
@@ -27,7 +27,7 @@ export const $$: interface_.procedures.file_to_file = p_.command_procedure(
                         p_.s.query(
                             $q['read file'](
                                 $r.in,
-                                ($): d_file_to_file.Error => {
+                                ($): d_file_to_file.Error_yy => {
                                     return ['file in file out', ['reading file', $]]
                                 }
                             ),
@@ -39,7 +39,7 @@ export const $$: interface_.procedures.file_to_file = p_.command_procedure(
                                             'path': $r.in,
                                             'data': $v,
                                         },
-                                        ($): d_file_to_file.Error => {
+                                        ($): d_file_to_file.Error_yy => {
                                             return ['processing', $]
                                         }
                                     ),

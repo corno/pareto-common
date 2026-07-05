@@ -5,17 +5,24 @@ import * as p_i from 'pareto-core/dist/interface/transformer'
 import * as d_in from "../../../../interface/data/file_to_file"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
+export namespace interface_ {
+    export type Error = p_i.Transformer<
+        d_in.Error,
+        d_out.Phrase
+    >
+    export type Command_Error = p_i.Transformer<
+        d_in.Command_Error,
+        d_out.Phrase
+    >
+}
+
 //dependencies
 import * as t_read_file from "pareto-resources/dist/implementation/manual/transformers/read_file/fountain_pen"
-// import * as s_fp from "pareto-fountain-pen/dist/implementation/manual/schemas/block/serializers"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose/deprecated"
 
-export const Error: p_i.Transformer<
-    d_in.Error_x,
-    d_out.Phrase
-> = ($) => p_.from.state($).decide(
+export const Error: interface_.Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'too many arguments': return p_.option($, ($) => sh.ph.literal("too many arguments"))
@@ -33,10 +40,7 @@ export const Error: p_i.Transformer<
         }
     })
 
-export const Command_Error: p_i.Transformer<
-    d_in.Command_Error,
-    d_out.Phrase
-> = ($) => p_.from.state($).decide(
+export const Command_Error: interface_.Command_Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
             case 'command line arguments': return p_.option($, ($) => sh.ph.composed([

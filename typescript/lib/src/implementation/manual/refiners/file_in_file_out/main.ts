@@ -3,19 +3,24 @@ import p_iterate from 'pareto-core/dist/implementation/refiner/specials/iterate'
 
 
 //data types
-import * as d_file_in_file_out from "../../../../interface/data/file_to_file"
-import * as d_main from "pareto-resources/dist/interface/data/temp_main"
+import * as d_out from "../../../../interface/data/file_to_file"
+import * as d_function from "../../../../interface/data/file_to_file"
+import * as d_in from "pareto-resources/dist/interface/data/temp_main"
+
+export namespace interface_ {
+    export type Parameters = p_i.Refiner<
+        d_out.Parameters,
+        d_function.Error,
+        d_in.Parameters
+    >
+}
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/dist/implementation/manual/refiners/path_unrestricted/text"
 
-export const Parameters: p_i.Refiner<
-    d_file_in_file_out.Parameters,
-    d_file_in_file_out.Error_x,
-    d_main.Parameters
-> = ($, abort) => {
+export const Parameters: interface_.Parameters = ($, abort) => {
     return p_iterate<
-        d_file_in_file_out.Parameters,
+        d_out.Parameters,
         string,
         null
     >({
@@ -49,5 +54,4 @@ export const Parameters: p_i.Refiner<
         }),
         on_dangling_item: () => abort(['too many arguments', null]),
     })
-
 }

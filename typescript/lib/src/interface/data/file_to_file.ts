@@ -6,11 +6,11 @@ import * as d_write_file from "pareto-resources/dist/interface/generated/liana/s
 
 import * as d_fp from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
-export type Error =
+export type Error_yy =
     | ['processing', d_fp.Phrase]
     | ['file in file out', Command_Error]
 
-export type Error_x =
+export type Error =
     | ['unexpected', {
         'expected': Expected,
     }]
@@ -23,7 +23,7 @@ export type Expected =
     | ['target path', null]
 
 export type Command_Error =
-    | ['command line arguments', Error_x]
+    | ['command line arguments', Error]
     | ['reading file', d_read_file.Error]
     | ['deserializing', string]
     | ['writing file', d_write_file.Error]
