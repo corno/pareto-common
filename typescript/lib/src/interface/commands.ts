@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/interface/command'
 
 import * as resources_pareto from "pareto-resources/interface/resources"
-import * as commands_pareto_stream from "pareto-stream/interface/commands"
-import * as queries_pareto_stream from "pareto-stream/interface/queries"
+import * as commands_pareto_stream from "pareto-stream-api/interface/commands"
+import * as queries_pareto_stream from "pareto-stream-api/interface/queries"
 import * as resources from "./queries.js"
 
 export namespace procedures {
