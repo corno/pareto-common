@@ -1,6 +1,6 @@
 {
   "name": "pareto-common",
-  "version": "0.1.40",
+  "version": "0.1.42",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A TypeScript library for common commands and queries",
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "pareto-application-api": "^0.1.0",
+    "pareto-filesystem-unrestricted-api": "^0.1.0",
     "pareto-fountain-pen": "^0.4.0",
     "pareto-resources": "^0.2.0",
     "pareto-stream-api": "^0.1.0"

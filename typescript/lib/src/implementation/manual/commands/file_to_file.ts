@@ -14,7 +14,7 @@ import * as t_transform_file_to_prose from "../transformers/file_to_file/prose.j
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 
-export const $$: interface_.procedures.file_to_file = p_.command_procedure(
+export const $$: interface_.file_to_file = p_.command(
     ($d, $s, $q, $c) => [
 
         p_.s.handle_error<d_main.Error, d_file_to_file.Error_yy>(

@@ -17,7 +17,7 @@ export namespace interface_ {
 }
 
 //dependencies
-import * as t_read_file from "pareto-resources/implementation/manual/transformers/read_file/prose"
+import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

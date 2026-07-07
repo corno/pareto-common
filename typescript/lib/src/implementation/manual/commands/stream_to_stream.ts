@@ -12,7 +12,7 @@ import * as d_stream_to_stream from "../../../interface/data/stream_to_stream.js
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 
-export const $$: interface_.procedures.stream_to_stream = p_.command_procedure(
+export const $$: interface_.stream_to_stream = p_.command(
     ($d, $s, $q, $c) => [
 
         p_.s.handle_error<d_main.Error, d_stream_to_stream.Error>(
