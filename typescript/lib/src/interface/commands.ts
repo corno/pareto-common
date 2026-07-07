@@ -7,7 +7,7 @@ import * as query_actions_pareto_stream_api from "pareto-stream-api/interface/qu
 import * as query_actions from "./query_actions.js"
 import * as query_actions_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/query_actions"
 
-export type file_to_file = p_.Command_Procedure<
+export type file_to_file = p_.Command<
     command_actions_pareto_application_api.main,
     null,
     {
@@ -20,7 +20,7 @@ export type file_to_file = p_.Command_Procedure<
     }
 >
 
-export type file_to_stream = p_.Command_Procedure<
+export type file_to_stream = p_.Command<
     command_actions_pareto_application_api.main,
     null,
     {
@@ -33,7 +33,7 @@ export type file_to_stream = p_.Command_Procedure<
     }
 >
 
-export type stream_to_stream = p_.Command_Procedure<
+export type stream_to_stream = p_.Command<
     command_actions_pareto_application_api.main,
     null,
     {
