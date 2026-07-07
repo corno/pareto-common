@@ -4,7 +4,7 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 //data types
 import * as d_file_in_stream_out from "../../../../interface/data/file_to_stream.js"
-import * as d_main from "pareto-resources/interface/data/temp_main"
+import * as d_main from "pareto-application-api/interface/data/main"
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"

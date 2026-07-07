@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/implementation/command'
 import * as interface_ from "../../../interface/commands.js"
 
 //data types
-import * as d_main from "pareto-resources/interface/data/temp_main"
+import * as d_main from "pareto-application-api/interface/data/main"
 import * as d_file_to_file from "../../../interface/data/file_to_file.js"
 
 //dependencies
