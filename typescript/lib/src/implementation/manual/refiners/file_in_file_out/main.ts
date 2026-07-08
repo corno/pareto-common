@@ -1,20 +1,10 @@
-import type * as p_i from 'pareto-core/interface/refiner'
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
+
+import type * as interface_ from "../../../../interface/declarations/refiners/file_in_file_out/main.js"
 
 
 //data types
 import type * as d_out from "../../../../interface/data/file_to_file.js"
-import type * as d_function from "../../../../interface/data/file_to_file.js"
-import type * as d_in from "pareto-application-api/interface/data/main"
-
-export namespace interface_ {
-    export type Parameters = p_i.Refiner<
-        d_out.Parameters,
-        d_function.Error,
-        d_in.Parameters
-    >
-}
-import * as temp_interface_ from "../../../../interface/declarations/refiners/file_in_file_out/main.js"
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"
