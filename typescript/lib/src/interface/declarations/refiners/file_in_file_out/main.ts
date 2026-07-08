@@ -1,5 +1,4 @@
 import type * as p_ from 'pareto-core/interface/refiner'
-import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
