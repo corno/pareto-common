@@ -33,7 +33,7 @@ export const Error: interface_.Error = ($) => p_.from.state($).decide(
                 sh.ph.literal("unexpected "),
                 sh.ph.literal("expected:" + $['expected'][0]),
             ]))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })
 
@@ -53,6 +53,6 @@ export const Command_Error: interface_.Command_Error = ($) => p_.from.state($).d
                 sh.ph.literal($)
             ]))
             case 'writing to stream': return p_.option($, ($) => sh.ph.literal("error writing to stream"))
-            default: return p_.au($[0])
+            default: return p_.exhaustive($[0])
         }
     })

@@ -22,7 +22,7 @@ export const My_Error = ($: d_in.Error_yy): d_out.Phrase => {
                     sh.ph.literal("file in file out: "),
                     t_file_in_file_out_to_prose.Command_Error($)
                 ]))
-                default: return p_.au($[0])
+                default: return p_.exhaustive($[0])
             }
         })
 }
