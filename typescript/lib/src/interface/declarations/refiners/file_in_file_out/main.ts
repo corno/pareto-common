@@ -1,4 +1,4 @@
-import type * as p_i from 'pareto-core/interface/refiner'
+import type * as p_ from 'pareto-core/interface/refiner'
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
@@ -8,7 +8,7 @@ import type * as d_function from "../../../data/file_to_file.js"
 import type * as d_in from "pareto-application-api/interface/data/main"
 
 
-    export type Parameters = p_i.Refiner<
+    export type Parameters = p_.Refiner<
         d_out.Parameters,
         d_function.Error,
         d_in.Parameters
