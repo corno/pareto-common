@@ -14,6 +14,7 @@ export namespace interface_ {
         d_in.Parameters
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/refiners/file_in_file_out/main.js"
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"

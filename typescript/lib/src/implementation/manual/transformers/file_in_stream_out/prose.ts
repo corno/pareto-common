@@ -15,6 +15,7 @@ export namespace interface_ {
         d_out.Phrase
     >
 }
+import * as temp_interface_ from "../../../../interface/declarations/transformers/file_in_stream_out/prose.js"
 
 //dependencies
 import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_file/prose"
