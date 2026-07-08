@@ -3,9 +3,9 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
-import * as d_out from "../../../../interface/data/file_to_file.js"
-import * as d_function from "../../../../interface/data/file_to_file.js"
-import * as d_in from "pareto-application-api/interface/data/main"
+import type * as d_out from "../../../../interface/data/file_to_file.js"
+import type * as d_function from "../../../../interface/data/file_to_file.js"
+import type * as d_in from "pareto-application-api/interface/data/main"
 
 export namespace interface_ {
     export type Parameters = p_i.Refiner<

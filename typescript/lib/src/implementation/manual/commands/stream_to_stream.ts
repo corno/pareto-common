@@ -5,8 +5,8 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import * as interface_ from "../../../interface/declarations/commands.js"
 
 //data types
-import * as d_main from "pareto-application-api/interface/data/main"
-import * as d_stream_to_stream from "../../../interface/data/stream_to_stream.js"
+import type * as d_main from "pareto-application-api/interface/data/main"
+import type * as d_stream_to_stream from "../../../interface/data/stream_to_stream.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
