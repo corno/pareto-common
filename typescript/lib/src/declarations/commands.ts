@@ -4,7 +4,7 @@ import type * as command_interfaces_pareto_filesystem_unrestricted_api from "par
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/interface/commands"
 import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/interface/commands"
 import type * as query_interfaces_pareto_stream_api from "pareto-stream-api/interface/queries"
-import * as query_interfaces from "../interface/queries.js"
+import type * as query_interfaces from "../interface/queries.js"
 import type * as query_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/queries"
 
 export type file_to_file = p_.Command_Implementation<
