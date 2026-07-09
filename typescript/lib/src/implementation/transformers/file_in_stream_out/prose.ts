@@ -3,7 +3,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 import type * as interface_ from "../../../declarations/transformers/file_in_stream_out/prose.js"
 
 //dependencies
-import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_file/prose"
+import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/transformers/read_file/prose"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

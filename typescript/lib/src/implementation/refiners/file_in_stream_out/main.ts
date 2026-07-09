@@ -7,7 +7,7 @@ import type * as d_file_in_stream_out from "../../../interface/data/file_to_stre
 import type * as d_main from "pareto-application-api/interface/data/main"
 
 //dependencies
-import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"
+import * as r_node_path_to_text from "pareto-resources/implementation/refiners/path_unrestricted/text"
 
 export const Parameters: p_i.Refiner<
     d_file_in_stream_out.Parameters,
