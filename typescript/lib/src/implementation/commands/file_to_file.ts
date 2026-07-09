@@ -1,10 +1,10 @@
 import * as p_ from 'pareto-core/implementation/command'
 
-import type * as interface_ from "../../../declarations/commands.js"
+import type * as interface_ from "../../declarations/commands.js"
 
 //data types
 import type * as d_main from "pareto-application-api/interface/data/main"
-import type * as d_file_to_file from "../../../interface/data/file_to_file.js"
+import type * as d_file_to_file from "../../interface/data/file_to_file.js"
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main.js"

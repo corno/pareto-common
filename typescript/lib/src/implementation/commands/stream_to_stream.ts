@@ -2,11 +2,11 @@ import * as p_ from 'pareto-core/implementation/command'
 import * as p_temp from 'pareto-core/implementation/transformer'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
-import type * as interface_ from "../../../declarations/commands.js"
+import type * as interface_ from "../../declarations/commands.js"
 
 //data types
 import type * as d_main from "pareto-application-api/interface/data/main"
-import type * as d_stream_to_stream from "../../../interface/data/stream_to_stream.js"
+import type * as d_stream_to_stream from "../../interface/data/stream_to_stream.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

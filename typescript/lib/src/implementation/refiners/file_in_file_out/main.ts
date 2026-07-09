@@ -1,10 +1,10 @@
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
-import type * as interface_ from "../../../../declarations/refiners/file_in_file_out/main.js"
+import type * as interface_ from "../../../declarations/refiners/file_in_file_out/main.js"
 
 
 //data types
-import type * as d_out from "../../../../interface/data/file_to_file.js"
+import type * as d_out from "../../../interface/data/file_to_file.js"
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/implementation/manual/refiners/path_unrestricted/text"

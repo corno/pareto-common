@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-import type * as interface_ from "../../../../declarations/transformers/file_in_file_out/prose.js"
+import type * as interface_ from "../../../declarations/transformers/file_in_stream_out/prose.js"
 
 //dependencies
 import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/read_file/prose"
@@ -14,9 +14,6 @@ export const Error: interface_.Error = ($) => p_.from.state($).decide(
             case 'too many arguments': return p_.option($, ($) => sh.ph.literal("too many arguments"))
             case 'invalid source path': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("invalid source path"),
-            ]))
-            case 'invalid target path': return p_.option($, ($) => sh.ph.composed([
-                sh.ph.literal("invalid target path"),
             ]))
             case 'unexpected': return p_.option($, ($) => sh.ph.composed([
                 sh.ph.literal("unexpected "),
@@ -41,7 +38,7 @@ export const Command_Error: interface_.Command_Error = ($) => p_.from.state($).d
                 sh.ph.literal("error deserializing: "),
                 sh.ph.literal($)
             ]))
-            case 'writing file': return p_.option($, ($) => sh.ph.literal("error writing file"))
+            case 'writing to stream': return p_.option($, ($) => sh.ph.literal("error writing to stream"))
             default: return p_.exhaustive($[0])
         }
     })
