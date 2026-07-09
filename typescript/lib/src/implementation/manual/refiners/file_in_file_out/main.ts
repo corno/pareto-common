@@ -1,6 +1,6 @@
 import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
-import type * as interface_ from "../../../../interface/declarations/refiners/file_in_file_out/main.js"
+import type * as interface_ from "../../../../declarations/refiners/file_in_file_out/main.js"
 
 
 //data types
