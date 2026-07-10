@@ -1,6 +1,6 @@
-import type * as d_prose from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
-import type * as d_list_of_characters from "pareto-fountain-pen/interface/generated/liana/schemas/list_of_characters/data"
-import type * as d_path from "pareto-resources/interface/generated/liana/schemas/fs_unrestricted_path/data"
+import type * as d_prose from "pareto-fountain-pen/interface/data/prose"
+import type * as d_list_of_characters from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as d_path from "pareto-resources/interface/data/fs_unrestricted_path"
 
 
 export type Result = {

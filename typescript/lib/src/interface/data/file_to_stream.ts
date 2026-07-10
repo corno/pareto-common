@@ -1,9 +1,9 @@
 
-import type * as d_path from "pareto-resources/interface/generated/liana/schemas/fs_unrestricted_path/data"
+import type * as d_path from "pareto-resources/interface/data/fs_unrestricted_path"
 
-import type * as d_read_file from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_read_file/data"
+import type * as d_read_file from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_read_file"
 
-import type * as d_prose from "pareto-fountain-pen/interface/generated/liana/schemas/prose/data"
+import type * as d_prose from "pareto-fountain-pen/interface/data/prose"
 
 export type Error =
     | ['processing', d_prose.Phrase]
