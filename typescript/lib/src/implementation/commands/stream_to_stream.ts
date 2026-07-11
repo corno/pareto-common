@@ -6,7 +6,7 @@ import type * as interface_ from "../../declarations/commands.js"
 
 //data types
 import type * as d_main from "pareto-application-api/interface/data/main"
-import type * as d_stream_to_stream from "../../interface/data/stream_to_stream.js"
+import type * as d_stream_to_stream from "../../interface/schemas/stream_to_stream.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"

@@ -3,7 +3,7 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
-import type * as d_file_in_stream_out from "../../../interface/data/file_to_stream.js"
+import type * as d_file_in_stream_out from "../../../interface/schemas/file_to_stream.js"
 import type * as d_main from "pareto-application-api/interface/data/main"
 
 //dependencies
