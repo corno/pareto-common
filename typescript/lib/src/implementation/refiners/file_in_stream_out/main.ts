@@ -3,19 +3,19 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //data types
-import type * as d_file_in_stream_out from "../../../interface/schemas/file_to_stream.js"
-import type * as d_main from "pareto-application-api/interface/data/main"
+import type * as s_file_in_stream_out from "../../../interface/schemas/file_to_stream.js"
+import type * as s_main from "pareto-application-api/interface/data/main"
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/implementation/refiners/path_unrestricted/text"
 
 export const Parameters: p_i.Refiner<
-    d_file_in_stream_out.Parameters,
-    d_file_in_stream_out.Error_x,
-    d_main.Parameters
+    s_file_in_stream_out.Parameters,
+    s_file_in_stream_out.Error_x,
+    s_main.Parameters
 > = ($, abort) => {
     return p_iterate<
-        d_file_in_stream_out.Parameters,
+        s_file_in_stream_out.Parameters,
         string,
         null
     >({

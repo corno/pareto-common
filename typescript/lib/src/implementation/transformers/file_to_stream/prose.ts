@@ -1,8 +1,8 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //data types
-import type * as d_in from "../../../interface/schemas/file_to_stream.js"
-import type * as d_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_in from "../../../interface/schemas/file_to_stream.js"
+import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 
 //dependencies
 import * as t_file_in_stream_out_to_prose from "../file_in_stream_out/prose.js"
@@ -10,7 +10,7 @@ import * as t_file_in_stream_out_to_prose from "../file_in_stream_out/prose.js"
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-export const My_Error = ($: d_in.Error): d_out.Phrase => {
+export const My_Error = ($: s_in.Error): s_out.Phrase => {
     return p_.from.state($).decide(
         ($) => {
             switch ($[0]) {

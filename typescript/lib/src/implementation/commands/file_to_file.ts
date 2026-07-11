@@ -3,8 +3,8 @@ import * as p_ from 'pareto-core/implementation/command'
 import type * as interface_ from "../../declarations/commands.js"
 
 //data types
-import type * as d_main from "pareto-application-api/interface/data/main"
-import type * as d_file_to_file from "../../interface/schemas/file_to_file.js"
+import type * as s_main from "pareto-application-api/interface/data/main"
+import type * as s_file_to_file from "../../interface/schemas/file_to_file.js"
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main.js"
@@ -17,7 +17,7 @@ import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 export const $$: interface_.file_to_file = p_.command(
     ($d, $s, $q, $c) => [
 
-        p_.s.handle_error<d_main.Error, d_file_to_file.Error_yy>(
+        p_.s.handle_error<s_main.Error, s_file_to_file.Error_yy>(
             [
 
                 p_.s.refine(
@@ -27,7 +27,7 @@ export const $$: interface_.file_to_file = p_.command(
                         p_.s.query(
                             $q['read file'](
                                 $r.in,
-                                ($): d_file_to_file.Error_yy => {
+                                ($): s_file_to_file.Error_yy => {
                                     return ['file in file out', ['reading file', $]]
                                 }
                             ),
@@ -39,7 +39,7 @@ export const $$: interface_.file_to_file = p_.command(
                                             'path': $r.in,
                                             'data': $v,
                                         },
-                                        ($): d_file_to_file.Error_yy => {
+                                        ($): s_file_to_file.Error_yy => {
                                             return ['processing', $]
                                         }
                                     ),

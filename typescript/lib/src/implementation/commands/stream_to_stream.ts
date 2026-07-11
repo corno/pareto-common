@@ -5,8 +5,8 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import type * as interface_ from "../../declarations/commands.js"
 
 //data types
-import type * as d_main from "pareto-application-api/interface/data/main"
-import type * as d_stream_to_stream from "../../interface/schemas/stream_to_stream.js"
+import type * as s_main from "pareto-application-api/interface/data/main"
+import type * as s_stream_to_stream from "../../interface/schemas/stream_to_stream.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
@@ -15,12 +15,12 @@ import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 export const $$: interface_.stream_to_stream = p_.command(
     ($d, $s, $q, $c) => [
 
-        p_.s.handle_error<d_main.Error, d_stream_to_stream.Error>(
+        p_.s.handle_error<s_main.Error, s_stream_to_stream.Error>(
             [
                 p_.s.query(
                     $q['get instream data'](
                         null,
-                        ($): d_stream_to_stream.Error => ['could not read instream', null],
+                        ($): s_stream_to_stream.Error => ['could not read instream', null],
                     ),
                     ($v) => [
 
@@ -30,7 +30,7 @@ export const $$: interface_.stream_to_stream = p_.command(
                                 {
                                     'data': $v,
                                 },
-                                ($): d_stream_to_stream.Error => {
+                                ($): s_stream_to_stream.Error => {
                                     return ['deserialization failed', $]
                                 }
                             ),
@@ -42,7 +42,7 @@ export const $$: interface_.stream_to_stream = p_.command(
                                             ($) => $
                                         )
                                     },
-                                    ($): d_stream_to_stream.Error => ['could not write to stdout', null],
+                                    ($): s_stream_to_stream.Error => ['could not write to stdout', null],
                                 )
                             ],
 
@@ -69,7 +69,7 @@ export const $$: interface_.stream_to_stream = p_.command(
                             ])
                         ]),
                     },
-                    ($): d_main.Error => ({
+                    ($): s_main.Error => ({
                         'exit code': 2
                     }),
                 )

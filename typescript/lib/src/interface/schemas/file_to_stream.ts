@@ -1,12 +1,12 @@
 
-import type * as d_path from "pareto-resources/interface/data/fs_unrestricted_path"
+import type * as s_path from "pareto-resources/interface/data/fs_unrestricted_path"
 
-import type * as d_read_file from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_read_file"
+import type * as s_read_file from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_read_file"
 
-import type * as d_prose from "pareto-fountain-pen/interface/data/prose"
+import type * as s_prose from "pareto-fountain-pen/interface/data/prose"
 
 export type Error =
-    | ['processing', d_prose.Phrase]
+    | ['processing', s_prose.Phrase]
     | ['file in stream out', Command_Error]
 
 export type Error_x =
@@ -22,12 +22,12 @@ export type Expected =
     
 export type Command_Error =
     | ['command line arguments', Error_x]
-    | ['reading file', d_read_file.Error]
+    | ['reading file', s_read_file.Error]
     | ['deserializing', string]
     | ['writing to stream', null]
 
 export type Parameters = {
-    'in': d_path.Node_Path,
+    'in': s_path.Node_Path,
 }
 
-export type Path = d_path.Node_Path
+export type Path = s_path.Node_Path

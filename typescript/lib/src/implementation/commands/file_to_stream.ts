@@ -4,8 +4,8 @@ import p_text_from_list from 'pareto-core/implementation/transformer/specials/te
 import type * as interface_ from "../../declarations/commands.js"
 
 //data types
-import type * as d_main from "pareto-application-api/interface/data/main"
-import type * as d_file_to_stream from "../../interface/schemas/file_to_stream.js"
+import type * as s_main from "pareto-application-api/interface/data/main"
+import type * as s_file_to_stream from "../../interface/schemas/file_to_stream.js"
 
 //dependencies
 import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/main.js"
@@ -18,7 +18,7 @@ import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 export const $$: interface_.file_to_stream = p_.command(
     ($d, $s, $q, $c) => [
 
-        p_.s.handle_error<d_main.Error, d_file_to_stream.Error>(
+        p_.s.handle_error<s_main.Error, s_file_to_stream.Error>(
             [
 
                 p_.s.refine(
@@ -28,7 +28,7 @@ export const $$: interface_.file_to_stream = p_.command(
                         p_.s.query(
                             $q['read file'](
                                 $r.in,
-                                ($): d_file_to_stream.Error => {
+                                ($): s_file_to_stream.Error => {
                                     return ['file in stream out', ['reading file', $]]
                                 }
                             ),
@@ -40,7 +40,7 @@ export const $$: interface_.file_to_stream = p_.command(
                                             'path': $r.in,
                                             'data': $v,
                                         },
-                                        ($): d_file_to_stream.Error => {
+                                        ($): s_file_to_stream.Error => {
                                             return ['processing', $]
                                         }
                                     ),

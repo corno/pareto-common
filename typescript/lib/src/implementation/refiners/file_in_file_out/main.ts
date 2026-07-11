@@ -4,14 +4,14 @@ import type * as interface_ from "../../../declarations/refiners/file_in_file_ou
 
 
 //data types
-import type * as d_out from "../../../interface/schemas/file_to_file.js"
+import type * as s_out from "../../../interface/schemas/file_to_file.js"
 
 //dependencies
 import * as r_node_path_to_text from "pareto-resources/implementation/refiners/path_unrestricted/text"
 
 export const Parameters: interface_.Parameters = ($, abort) => {
     return p_iterate<
-        d_out.Parameters,
+        s_out.Parameters,
         string,
         null
     >({
