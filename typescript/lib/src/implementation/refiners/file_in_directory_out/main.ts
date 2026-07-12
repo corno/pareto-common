@@ -4,9 +4,9 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //schemas
-import type * as s_out from "../../../interface/schemas/file_in_file_out_refiner.js"
+import type * as s_out from "../../../interface/schemas/file_in_directory_out_refiner.js"
 //schemas
-import type * as s_function from "../../../interface/schemas/file_in_file_out_refiner.js"
+import type * as s_function from "../../../interface/schemas/file_in_directory_out_refiner.js"
 import type * as s_in from "../../../interface/schemas/main.js"
 
 export namespace declarations {
@@ -18,9 +18,8 @@ export namespace declarations {
     >
 }
 
-
 //dependencies
-import * as r_node_path_to_text from "pareto-resources/implementation/refiners/path_unrestricted/text"
+import * as r_path_to_text from "pareto-resources/implementation/refiners/path_unrestricted/text"
 
 export const Parameters: declarations.Parameters = ($, abort) => {
     return p_iterate<
@@ -31,7 +30,7 @@ export const Parameters: declarations.Parameters = ($, abort) => {
         list: $.arguments,
         end_info: null,
         assign: (iterator) => ({
-            'in': r_node_path_to_text.Node_Path(
+            'in': r_path_to_text.Node_Path(
                 iterator.consume(
                     ($) => abort(['unexpected', {
                         'expected': ['source path', null]
@@ -43,17 +42,13 @@ export const Parameters: declarations.Parameters = ($, abort) => {
                     'pedantic': false,
                 },
             ),
-            'out': r_node_path_to_text.Node_Path(
+            'out': r_path_to_text.Context_Path(
                 iterator.consume(
                     ($) => abort(['unexpected', {
                         'expected': ['target path', null]
                     }]),
                     ($) => $,
                 ),
-                ($) => abort(['invalid target path', null]),
-                {
-                    'pedantic': false,
-                },
             ),
         }),
         on_dangling_item: () => abort(['too many arguments', null]),

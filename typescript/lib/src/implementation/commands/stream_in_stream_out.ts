@@ -21,7 +21,7 @@ export const $$: p_i.Command_Implementation<
     null,
     {
         'get instream data': query_interfaces_pareto_stream_api.get_instream_data,
-        'process data': query_interfaces.process_stream_data,
+        'process data': query_interfaces.stream_in_stream_out,
     },
     {
         'log error': command_interfaces_pareto_stream_api.log_error

@@ -24,7 +24,7 @@ export const $$: p_i.Command_Implementation<
     null,
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
-        'process data': query_interfaces.process_file_data,
+        'process data': query_interfaces.file_in_stream_out,
     },
     {
         'write to stdout': command_interfaces_pareto_stream_api.write_to_stdout

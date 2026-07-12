@@ -3,14 +3,7 @@ import * as p_i from 'pareto-core/interface/command_implementation'
 
 //schemas
 import type * as s_main from "../../interface/schemas/main.js"
-import type * as s_file_to_file_command from "../../interface/schemas/file_in_file_out_command.js"
-
-//dependencies
-import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main.js"
-import * as t_f2f_command_to_prose from "../transformers/file_in_file_out_command/prose.js"
-
-//shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import type * as s_file_to_file_command from "../../interface/schemas/file_in_directory_out_command.js"
 
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/commands"
@@ -19,12 +12,20 @@ import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/in
 import type * as query_interfaces from "../../interface/queries.js"
 import type * as query_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/queries"
 
+//dependencies
+import * as r_file_in_directory_out_from_main from "../refiners/file_in_directory_out/main.js"
+import * as t_f2f_command_to_prose from "../transformers/file_in_directory_out_command/prose.js"
+import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/implementation/commands/write_directory_content"
+
+//shorthands
+import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     null,
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
-        'process data': query_interfaces.file_in_file_out,
+        'process data': query_interfaces.file_in_directory_out,
     },
     {
         'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
@@ -37,7 +38,7 @@ export const $$: p_i.Command_Implementation<
             [
 
                 p_.s.refine(
-                    (abort) => r_file_in_file_out_from_main.Parameters($d, ($) => abort(['command line arguments', $])),
+                    (abort) => r_file_in_directory_out_from_main.Parameters($d, ($) => abort(['command line arguments', $])),
                     ($r) => [
 
                         p_.s.query(
@@ -60,13 +61,19 @@ export const $$: p_i.Command_Implementation<
                                         }
                                     ),
                                     ($v) => [
-                                        $c['write file'].execute(
+                                        c_write_directory_content(
+                                            null,
+                                            null,
+                                            {
+                                                'write file': $c['write file'],
+                                            }
+                                        ).execute(
                                             {
                                                 'path': $r.out,
-                                                'data': $v.data,
+                                                'directory': $v.data,
                                             },
-                                            ($) => {
-                                                return ['writing file', $]
+                                            ($): s_file_to_file_command.Error => {
+                                                return ['writing directory', $]
                                             },
                                         )
                                     ],

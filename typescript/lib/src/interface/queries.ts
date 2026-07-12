@@ -1,17 +1,29 @@
 import * as p_ from 'pareto-core/interface/query_interface'
 
-import type * as s_process_file_data from "./schemas/file_query.js"
-import type * as s_process_stream_data from "./schemas/stream_query.js"
+import type * as s_file_in_file_out_data from "./schemas/file_in_file_out_query.js"
+import type * as s_file_in_directory_out_data from "./schemas/file_in_directory_out_query.js"
+import type * as s_file_in_stream_out_data from "./schemas/file_in_stream_out_query.js"
+import type * as s_stream_in_stream_out_data from "./schemas/stream_in_stream_out_query.js"
 
 
-export type process_file_data = p_.Query_Interface<
-    s_process_file_data.Result,
-    s_process_file_data.Error,
-    s_process_file_data.Parameters
+export type file_in_file_out = p_.Query_Interface<
+    s_file_in_file_out_data.Result,
+    s_file_in_file_out_data.Error,
+    s_file_in_file_out_data.Parameters
+>
+export type file_in_directory_out = p_.Query_Interface<
+    s_file_in_directory_out_data.Result,
+    s_file_in_directory_out_data.Error,
+    s_file_in_directory_out_data.Parameters
+>
+export type file_in_stream_out = p_.Query_Interface<
+    s_file_in_stream_out_data.Result,
+    s_file_in_stream_out_data.Error,
+    s_file_in_stream_out_data.Parameters
 >
 
-export type process_stream_data = p_.Query_Interface<
-    s_process_stream_data.Result,
-    s_process_stream_data.Error,
-    s_process_stream_data.Parameters
+export type stream_in_stream_out = p_.Query_Interface<
+    s_stream_in_stream_out_data.Result,
+    s_stream_in_stream_out_data.Error,
+    s_stream_in_stream_out_data.Parameters
 >
