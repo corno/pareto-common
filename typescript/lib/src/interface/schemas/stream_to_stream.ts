@@ -1,5 +1,5 @@
 
-import type * as s_prose from "pareto-fountain-pen/interface/data/prose"
+import type * as s_prose from "./prose.js"
 
 export type Error =
     | ['could not read instream', null]

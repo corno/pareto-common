@@ -1,6 +1,6 @@
-import type * as s_prose from "pareto-fountain-pen/interface/data/prose"
-import type * as s_text from "pareto-fountain-pen/interface/data/text"
-import type * as s_list_of_characters from "pareto-fountain-pen/interface/data/list_of_characters"
+import type * as s_prose from "./prose.js"
+import type * as s_text from "./text.js"
+import type * as s_list_of_characters from "./list_of_characters.js"
 
 
 export type Result = {

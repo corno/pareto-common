@@ -3,7 +3,7 @@ import * as p_i from 'pareto-core/interface/command_implementation'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //schemas
-import type * as s_main from "pareto-application-api/interface/data/main"
+import type * as s_main from "../../interface/schemas/main.js"
 import type * as s_file_to_stream from "../../interface/schemas/file_to_stream.js"
 
 //dependencies

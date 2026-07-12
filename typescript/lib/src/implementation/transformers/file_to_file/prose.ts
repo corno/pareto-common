@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
 import type * as s_in from "../../../interface/schemas/file_to_file.js"
-import type * as s_out from "pareto-fountain-pen/interface/data/prose"
+import type * as s_out from "../../../interface/schemas/prose.js"
 
 //dependencies
 import * as t_file_in_file_out_to_prose from "../file_in_file_out/prose.js"

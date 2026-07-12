@@ -1,9 +1,9 @@
 
-import type * as s_path from "pareto-resources/interface/data/fs_unrestricted_path"
+import type * as s_path from "./fs_unrestricted_path.js"
 
-import type * as s_read_file from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_read_file"
+import type * as s_read_file from "./fs_unrestricted_read_file.js"
 
-import type * as s_prose from "pareto-fountain-pen/interface/data/prose"
+import type * as s_prose from "./prose.js"
 
 export type Error =
     | ['processing', s_prose.Phrase]
