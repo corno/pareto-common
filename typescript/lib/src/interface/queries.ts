@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/interface/query_interface'
 
-import type * as s_process_file_data from "./schemas/process_file_data.js"
-import type * as s_process_stream_data from "./schemas/process_stream_data.js"
+import type * as s_process_file_data from "./schemas/file_query.js"
+import type * as s_process_stream_data from "./schemas/stream_query.js"
 
 
 export type process_file_data = p_.Query_Interface<

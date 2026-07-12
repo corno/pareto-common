@@ -7,7 +7,10 @@ import type * as s_prose from "./prose.js"
 
 export type Error =
     | ['processing', s_prose.Phrase]
-    | ['file in stream out', Command_Error]
+    | ['command line arguments', Error_x]
+    | ['reading file', s_read_file.Error]
+    | ['deserializing', string]
+    | ['writing to stream', null]
 
 export type Error_x =
     | ['unexpected', {
@@ -19,12 +22,6 @@ export type Error_x =
 
 export type Expected =
     | ['source path', null]
-    
-export type Command_Error =
-    | ['command line arguments', Error_x]
-    | ['reading file', s_read_file.Error]
-    | ['deserializing', string]
-    | ['writing to stream', null]
 
 export type Parameters = {
     'in': s_path.Node_Path,

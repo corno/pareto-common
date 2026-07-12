@@ -2,7 +2,7 @@ import type * as p_ from 'pareto-core/interface/refiner'
 
 
 //schemas
-import type * as s_function from "../../../interface/schemas/file_to_file.js"
+import type * as s_function from "../../../interface/schemas/file_in_file_out_refiner.js"
 import type * as s_in from "../../../interface/schemas/main.js"
 
 

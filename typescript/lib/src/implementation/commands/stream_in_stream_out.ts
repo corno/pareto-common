@@ -10,7 +10,7 @@ import type * as query_interfaces_pareto_stream_api from "pareto-stream-api/inte
 
 //schemas
 import type * as s_main from "../../interface/schemas/main.js"
-import type * as s_stream_to_stream from "../../interface/schemas/stream_to_stream.js"
+import type * as s_stream_to_stream from "../../interface/schemas/stream_in_stream_out_command.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
