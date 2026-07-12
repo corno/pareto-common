@@ -1,6 +1,6 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
-//data types
+//schemas
 import type * as s_in from "../../../interface/schemas/file_to_stream.js"
 import type * as s_out from "pareto-fountain-pen/interface/data/prose"
 
