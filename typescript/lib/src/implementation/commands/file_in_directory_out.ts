@@ -14,7 +14,7 @@ import type * as query_interfaces_pareto_filesystem_unrestricted_api from "paret
 
 //dependencies
 import * as r_file_in_directory_out_from_main from "../refiners/file_in_directory_out/main.js"
-import * as t_f2f_command_to_prose from "../transformers/file_in_directory_out_command/prose.js"
+import * as t_f2f_command_to_prose from "../serializers/file_in_directory_out_command.js"
 import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/implementation/commands/write_directory_content"
 
 //shorthands
@@ -54,7 +54,7 @@ export const $$: p_i.Command_Implementation<
                                     $q['process data'](
                                         {
                                             'path': $r.in,
-                                            'data': $v,
+                                            'data': $v.data,
                                         },
                                         ($): s_file_to_file_command.Error => {
                                             return ['processing', $]
@@ -87,11 +87,9 @@ export const $$: p_i.Command_Implementation<
             ($) => [
                 $c['log error'].execute(
                     {
-                        'message': sh.pg.sentences([
-                            sh.sentence([
-                                t_f2f_command_to_prose.Error($)
-                            ])
-                        ]),
+                        'phrase': t_f2f_command_to_prose.Error($),
+                        'indentation': "    ",
+                        'newline': "\n",
                     },
                     ($) => ({
                         'exit code': 2

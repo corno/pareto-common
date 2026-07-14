@@ -8,7 +8,7 @@ import type * as s_file_to_stream from "../../interface/schemas/file_in_stream_o
 
 //dependencies
 import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/main.js"
-import * as t_file_to_stream_to_prose from "../transformers/file_in_stream_out_command/prose.js"
+import * as t_file_to_stream_to_prose from "../serializers/file_in_stream_out_command.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
@@ -21,14 +21,17 @@ import type * as query_interfaces_pareto_filesystem_unrestricted_api from "paret
 
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
-    null,
     {
-        'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
-        'process data': query_interfaces.file_in_stream_out,
+        'indentation': string
+        'newline': string
     },
     {
-        'write to stdout': command_interfaces_pareto_stream_api.write_to_stdout
-        'log error': command_interfaces_pareto_stream_api.log_error,
+        'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
+        'process data': query_interfaces.file_in_stream_out
+    },
+    {
+        'log': command_interfaces_pareto_stream_api.log
+        'log error': command_interfaces_pareto_stream_api.log_error
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -53,19 +56,18 @@ export const $$: p_i.Command_Implementation<
                                     $q['process data'](
                                         {
                                             'path': $r.in,
-                                            'data': $v,
+                                            'data': $v.data,
                                         },
                                         ($): s_file_to_stream.Error => {
                                             return ['processing', $]
                                         }
                                     ),
                                     ($v) => [
-                                        $c['write to stdout'].execute(
+                                        $c['log'].execute(
                                             {
-                                                'data': p_text_from_list(
-                                                    $v.data,
-                                                    ($) => $
-                                                ),
+                                                'paragraph': $v.data,
+                                                'indentation': $s.indentation,
+                                                'newline': $s.newline,
                                             },
                                             ($) => {
                                                 return ['writing to stream', $]
@@ -82,11 +84,9 @@ export const $$: p_i.Command_Implementation<
             ($) => [
                 $c['log error'].execute(
                     {
-                        'message': sh.pg.sentences([
-                            sh.sentence([
-                                t_file_to_stream_to_prose.My_Error($)
-                            ])
-                        ]),
+                        'phrase': t_file_to_stream_to_prose.My_Error($),
+                        'indentation': $s.indentation,
+                        'newline': $s.newline,
                     },
                     ($) => ({
                         'exit code': 2

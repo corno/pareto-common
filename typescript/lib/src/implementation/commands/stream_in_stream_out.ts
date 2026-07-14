@@ -18,14 +18,17 @@ import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
-    null,
     {
-        'get instream data': query_interfaces_pareto_stream_api.get_instream_data,
-        'process data': query_interfaces.stream_in_stream_out,
+        'indentation': string
+        'newline': string
+    },
+    {
+        'get instream data': query_interfaces_pareto_stream_api.get_instream_data
+        'process data': query_interfaces.stream_in_stream_out
     },
     {
         'log error': command_interfaces_pareto_stream_api.log_error
-        'write to stdout': command_interfaces_pareto_stream_api.write_to_stdout
+        'log': command_interfaces_pareto_stream_api.log
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -43,19 +46,20 @@ export const $$: p_i.Command_Implementation<
                         p_.s.query(
                             $q['process data'](
                                 {
-                                    'data': $v,
+                                    'data': $v.data,
                                 },
                                 ($): s_stream_to_stream.Error => {
-                                    return ['deserialization failed', $]
+                                    return ['deserialization failed', {
+                                        'message': $.phrase
+                                    }]
                                 }
                             ),
                             ($v) => [
-                                $c['write to stdout'].execute(
+                                $c['log'].execute(
                                     {
-                                        'data': p_text_from_list(
-                                            $v.data,
-                                            ($) => $
-                                        )
+                                        'paragraph': $v.data,
+                                        'indentation': $s.indentation,
+                                        'newline': $s.newline,
                                     },
                                     ($): s_stream_to_stream.Error => ['could not write to stdout', null],
                                 )
@@ -69,20 +73,17 @@ export const $$: p_i.Command_Implementation<
             ($) => [
                 $c['log error'].execute(
                     {
-                        'message': sh.pg.sentences([
-                            sh.sentence([
-
-                                p_temp.from.state($).decide(
-                                    ($) => {
-                                        switch ($[0]) {
-                                            case 'could not read instream': return p_temp.ss($, ($) => sh.ph.literal("could not read instream"))
-                                            case 'deserialization failed': return p_temp.ss($, ($) => $)
-                                            case 'could not write to stdout': return p_temp.ss($, ($) => sh.ph.literal("could not write to stdout"))
-                                            default: return p_temp.exhaustive($[0])
-                                        }
-                                    })
-                            ])
-                        ]),
+                        'phrase': p_temp.from.state($).decide(
+                            ($) => {
+                                switch ($[0]) {
+                                    case 'could not read instream': return p_temp.ss($, ($) => sh.ph.literal("could not read instream"))
+                                    case 'deserialization failed': return p_temp.ss($, ($) => $.message)
+                                    case 'could not write to stdout': return p_temp.ss($, ($) => sh.ph.literal("could not write to stdout"))
+                                    default: return p_temp.exhaustive($[0])
+                                }
+                            }),
+                        'indentation': $s.indentation,
+                        'newline': $s.newline,
                     },
                     ($): s_main.Error => ({
                         'exit code': 2

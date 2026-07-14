@@ -1,7 +1,8 @@
-
-import type * as s_prose from "./prose.js"
+import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 
 export type Error =
     | ['could not read instream', null]
-    | ['deserialization failed', s_prose.Phrase]
+    | ['deserialization failed', {
+        'message': p_prose.Phrase
+    }]
     | ['could not write to stdout', null]

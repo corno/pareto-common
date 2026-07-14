@@ -19,7 +19,7 @@ export namespace declarations {
 }
 
 //dependencies
-import * as r_path_to_text from "pareto-resources/implementation/refiners/path_unrestricted/text"
+import * as r_path_to_text from "pareto-filesystem-unrestricted-api/implementation/refiners/path_unrestricted/text"
 
 export const Parameters: declarations.Parameters = ($, abort) => {
     return p_iterate<

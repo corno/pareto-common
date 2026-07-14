@@ -7,7 +7,7 @@ import type * as s_file_to_file_command from "../../interface/schemas/file_in_fi
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main.js"
-import * as t_f2f_command_to_prose from "../transformers/file_in_file_out_command/prose.js"
+import * as t_f2f_command_to_prose from "../serializers/file_in_file_out_command.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
@@ -21,7 +21,10 @@ import type * as query_interfaces_pareto_filesystem_unrestricted_api from "paret
 
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
-    null,
+    {
+        'indentation': string
+        'newline': string
+    },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
         'process data': query_interfaces.file_in_file_out,
@@ -53,17 +56,19 @@ export const $$: p_i.Command_Implementation<
                                     $q['process data'](
                                         {
                                             'path': $r.in,
-                                            'data': $v,
+                                            'data': $v.data,
                                         },
                                         ($): s_file_to_file_command.Error => {
-                                            return ['processing', $]
+                                            return ['processing', $.phrase]
                                         }
                                     ),
                                     ($v) => [
                                         $c['write file'].execute(
                                             {
                                                 'path': $r.out,
-                                                'data': $v.data,
+                                                'paragraph': $v.paragraph,
+                                                'indentation': $s.indentation,
+                                                'newline': $s.newline,
                                             },
                                             ($) => {
                                                 return ['writing file', $]
@@ -80,11 +85,9 @@ export const $$: p_i.Command_Implementation<
             ($) => [
                 $c['log error'].execute(
                     {
-                        'message': sh.pg.sentences([
-                            sh.sentence([
-                                t_f2f_command_to_prose.Error($)
-                            ])
-                        ]),
+                        'phrase': t_f2f_command_to_prose.Error($),
+                        'indentation': $s.indentation,
+                        'newline': $s.newline,
                     },
                     ($) => ({
                         'exit code': 2

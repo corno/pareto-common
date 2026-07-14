@@ -1,12 +1,11 @@
+import * as p_prose from 'pareto-core/temp/fountain_pen/prose'
 
 import type * as s_path from "./fs_unrestricted_path.js"
 
 import type * as s_read_file from "./fs_unrestricted_read_file.js"
 
-import type * as s_prose from "./prose.js"
-
 export type Error =
-    | ['processing', s_prose.Phrase]
+    | ['processing', p_prose.Phrase]
     | ['command line arguments', Error_x]
     | ['reading file', s_read_file.Error]
     | ['deserializing', string]

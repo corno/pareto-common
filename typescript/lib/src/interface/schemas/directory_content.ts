@@ -1,1 +1,1 @@
-export * from "pareto-filesystem-unrestricted-api/interface/schemas/directory_content"
+export * from "pareto-filesystem-unrestricted-api/interface/schemas/to_be_written_directory_content"

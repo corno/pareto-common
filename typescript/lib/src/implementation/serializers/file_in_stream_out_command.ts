@@ -1,17 +1,16 @@
-import * as p_ from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/file_in_stream_out_command.js"
-import type * as s_out from "../../../interface/schemas/prose.js"
+import type * as s_in from "../../interface/schemas/file_in_stream_out_command.js"
 
 //dependencies
-import * as t_file_in_stream_out_to_prose from "../file_in_stream_out_refiner/prose.js"
-import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/transformers/read_file/prose"
+import * as t_file_in_stream_out_to_prose from "./file_in_stream_out_refiner.js"
+import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/serializers/read_file"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
 
-export const My_Error = ($: s_in.Error): s_out.Phrase => {
+export const My_Error: p_.Phrase_Serializer<s_in.Error> = ($) => {
     return p_.from.state($).decide(
         ($) => {
             switch ($[0]) {
