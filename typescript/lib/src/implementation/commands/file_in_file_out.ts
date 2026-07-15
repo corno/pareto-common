@@ -7,10 +7,8 @@ import type * as s_file_to_file_command from "../../interface/schemas/file_in_fi
 
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main.js"
-import * as t_f2f_command_to_prose from "../serializers/file_in_file_out_command.js"
-
-//shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
+import * as t_file_in_file_out_command_to_paragraph from "../transformers/file_in_file_out_command/paragraph.js"
+import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
 
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/commands"
@@ -31,7 +29,7 @@ export const $$: p_i.Command_Implementation<
     },
     {
         'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
-        'log error': command_interfaces_pareto_stream_api.log_error,
+        'log error lines': command_interfaces_pareto_stream_api.log_error_lines,
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -59,16 +57,24 @@ export const $$: p_i.Command_Implementation<
                                             'data': $v.data,
                                         },
                                         ($): s_file_to_file_command.Error => {
-                                            return ['processing', $.phrase]
+                                            return ['processing', {
+                                                'message': $.message
+                                            }]
                                         }
                                     ),
                                     ($v) => [
                                         $c['write file'].execute(
                                             {
                                                 'path': $r.out,
-                                                'paragraph': $v.paragraph,
-                                                'indentation': $s.indentation,
-                                                'newline': $s.newline,
+                                                'content': {
+                                                    'newline': $s.newline,
+                                                    'lines': t_paragraph_to_serialized_paragraph.Paragraph(
+                                                        $v.paragraph,
+                                                        {
+                                                            'indentation': $s.indentation
+                                                        }
+                                                    )
+                                                }
                                             },
                                             ($) => {
                                                 return ['writing file', $]
@@ -83,11 +89,14 @@ export const $$: p_i.Command_Implementation<
                 ),
             ],
             ($) => [
-                $c['log error'].execute(
+                $c['log error lines'].execute(
                     {
-                        'phrase': t_f2f_command_to_prose.Error($),
-                        'indentation': $s.indentation,
-                        'newline': $s.newline,
+                        'messages': t_paragraph_to_serialized_paragraph.Phrase(
+                            t_file_in_file_out_command_to_paragraph.Error($),
+                            {
+                                'indentation': $s.indentation
+                            }
+                        ),
                     },
                     ($) => ({
                         'exit code': 2

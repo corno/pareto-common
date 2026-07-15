@@ -4,24 +4,20 @@ import * as p_ from 'pareto-core/implementation/serializer'
 import type * as s_in from "../../interface/schemas/file_in_directory_out_refiner.js"
 
 namespace declarations {
-    export type Error = p_.Phrase_Serializer<s_in.Error>
+    export type Error = p_.Serializer<s_in.Error>
 }
 
-//dependencies
-
-//shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 export const Error: declarations.Error = ($) => p_.from.state($).decide(
     ($) => {
         switch ($[0]) {
-            case 'too many arguments': return p_.option($, ($) => sh.ph.literal("too many arguments"))
-            case 'invalid source path': return p_.option($, ($) => sh.ph.composed([
-                sh.ph.literal("invalid source path"),
+            case 'too many arguments': return p_.option($, ($) => p_.ph.literal("too many arguments"))
+            case 'invalid source path': return p_.option($, ($) => p_.ph.composed([
+                p_.ph.literal("invalid source path"),
             ]))
-            case 'unexpected': return p_.option($, ($) => sh.ph.composed([
-                sh.ph.literal("unexpected "),
-                sh.ph.literal("expected:" + $['expected'][0]),
+            case 'unexpected': return p_.option($, ($) => p_.ph.composed([
+                p_.ph.literal("unexpected "),
+                p_.ph.literal("expected:" + $['expected'][0]),
             ]))
             default: return p_.exhaustive($[0])
         }

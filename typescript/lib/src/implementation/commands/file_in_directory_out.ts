@@ -14,22 +14,23 @@ import type * as query_interfaces_pareto_filesystem_unrestricted_api from "paret
 
 //dependencies
 import * as r_file_in_directory_out_from_main from "../refiners/file_in_directory_out/main.js"
-import * as t_f2f_command_to_prose from "../serializers/file_in_directory_out_command.js"
+import * as t_file_in_directory_out_command_to_paragraph from "../transformers/file_in_directory_out_command/paragraph.js"
+import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
 import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/implementation/commands/write_directory_content"
 
-//shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
-    null,
+    {
+        'indentation': string
+    },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
         'process data': query_interfaces.file_in_directory_out,
     },
     {
         'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
-        'log error': command_interfaces_pareto_stream_api.log_error,
+        'log error lines': command_interfaces_pareto_stream_api.log_error_lines,
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -85,11 +86,14 @@ export const $$: p_i.Command_Implementation<
                 ),
             ],
             ($) => [
-                $c['log error'].execute(
+                $c['log error lines'].execute(
                     {
-                        'phrase': t_f2f_command_to_prose.Error($),
-                        'indentation': "    ",
-                        'newline': "\n",
+                        'messages': t_paragraph_to_serialized_paragraph.Phrase(
+                            t_file_in_directory_out_command_to_paragraph.Error($),
+                            {
+                                'indentation': $s.indentation
+                            }
+                        ),
                     },
                     ($) => ({
                         'exit code': 2
