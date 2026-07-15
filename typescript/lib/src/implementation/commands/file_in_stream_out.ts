@@ -11,7 +11,7 @@ import * as r_file_in_stream_out_from_main from "../refiners/file_in_stream_out/
 import * as t_file_to_stream_to_prose from "../serializers/file_in_stream_out_command.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 //interface dependencies
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/interface/commands"

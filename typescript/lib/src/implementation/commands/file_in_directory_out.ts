@@ -18,7 +18,7 @@ import * as t_f2f_command_to_prose from "../serializers/file_in_directory_out_co
 import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/implementation/commands/write_directory_content"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,

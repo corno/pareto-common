@@ -8,7 +8,7 @@ import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/
 import * as t_cli from "./file_in_file_out_refiner.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 export const Error: p_.Phrase_Serializer<s_in.Error> = ($) => {
     return p_.from.state($).decide(

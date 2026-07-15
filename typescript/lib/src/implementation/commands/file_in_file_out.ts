@@ -10,7 +10,7 @@ import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main
 import * as t_f2f_command_to_prose from "../serializers/file_in_file_out_command.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/commands"

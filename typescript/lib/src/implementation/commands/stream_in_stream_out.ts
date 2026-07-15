@@ -13,7 +13,7 @@ import type * as s_main from "../../interface/schemas/main.js"
 import type * as s_stream_to_stream from "../../interface/schemas/stream_in_stream_out_command.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/prose/deprecated"
+import * as sh from "pareto-fountain-pen/shorthands/prose_simple/deprecated"
 
 
 export const $$: p_i.Command_Implementation<
