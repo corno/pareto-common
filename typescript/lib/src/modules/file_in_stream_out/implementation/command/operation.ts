@@ -20,7 +20,6 @@ export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     {
         'indentation': string
-        'newline': string
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
