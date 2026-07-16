@@ -5,11 +5,6 @@ import * as p_i from 'pareto-core/interface/command_implementation'
 import type * as s_main from "../../schemas/main.js"
 import type * as s_file_to_file_command from "../../schemas/command.js"
 
-//dependencies
-import * as r_file_in_file_out_from_main from "../refiners/operation/main.js"
-import * as t_file_in_file_out_command_to_paragraph from "../transformations/operation/paragraph.js"
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
-
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/commands"
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/interface/commands"
@@ -17,11 +12,17 @@ import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/in
 import type * as query_interfaces from "../../interface/queries.js"
 import type * as query_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/queries"
 
+//dependencies
+import * as r_file_in_directory_out_from_main from "../refiners/operation/main.js"
+import * as t_file_in_directory_out_command_to_paragraph from "../../implementation/transformers/command/paragraph.js"
+import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
+import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/modules/helpers/implementation/commands/write_directory_content"
+
+
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     {
         'indentation': string
-        'newline': string
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
@@ -38,7 +39,7 @@ export const $$: p_i.Command_Implementation<
             [
 
                 p_.s.refine(
-                    (abort) => r_file_in_file_out_from_main.Parameters($d, ($) => abort(['command line arguments', $])),
+                    (abort) => r_file_in_directory_out_from_main.Parameters($d, ($) => abort(['command line arguments', $])),
                     ($r) => [
 
                         p_.s.query(
@@ -57,27 +58,23 @@ export const $$: p_i.Command_Implementation<
                                             'data': $v.data,
                                         },
                                         ($): s_file_to_file_command.Error => {
-                                            return ['processing', {
-                                                'message': $.message
-                                            }]
+                                            return ['processing', $]
                                         }
                                     ),
                                     ($v) => [
-                                        $c['write file'].execute(
+                                        c_write_directory_content(
+                                            null,
+                                            null,
+                                            {
+                                                'write file': $c['write file'],
+                                            }
+                                        ).execute(
                                             {
                                                 'path': $r.out,
-                                                'content': {
-                                                    'newline': $s.newline,
-                                                    'lines': t_paragraph_to_serialized_paragraph.Paragraph(
-                                                        $v.paragraph,
-                                                        {
-                                                            'indentation': $s.indentation
-                                                        }
-                                                    )
-                                                }
+                                                'directory': $v.data,
                                             },
-                                            ($) => {
-                                                return ['writing file', $]
+                                            ($): s_file_to_file_command.Error => {
+                                                return ['writing directory', $]
                                             },
                                         )
                                     ],
@@ -92,7 +89,7 @@ export const $$: p_i.Command_Implementation<
                 $c['log error lines'].execute(
                     {
                         'messages': t_paragraph_to_serialized_paragraph.Phrase(
-                            t_file_in_file_out_command_to_paragraph.Error($),
+                            t_file_in_directory_out_command_to_paragraph.Error($),
                             {
                                 'indentation': $s.indentation
                             }

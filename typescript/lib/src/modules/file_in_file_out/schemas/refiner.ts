@@ -1,6 +1,6 @@
 
 //dependencies
-import type * as i_path from "../../../interface/schemas/fs_unrestricted_path.js"
+import type * as i_path from "./fs_unrestricted_path.js"
 
 export type Error =
     | ['unexpected', {

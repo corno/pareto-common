@@ -18,7 +18,6 @@ export namespace declarations {
     >
 }
 
-
 //dependencies
 import * as deser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/deserializers/path"
 
@@ -43,17 +42,13 @@ export const Parameters: declarations.Parameters = ($, abort) => {
                     'pedantic': false,
                 },
             ),
-            'out': deser_path.Node_Path(
+            'out': deser_path.Context_Path(
                 iterator.consume(
                     ($) => abort(['unexpected', {
                         'expected': ['target path', null]
                     }]),
                     ($) => $,
                 ),
-                ($) => abort(['invalid target path', null]),
-                {
-                    'pedantic': false,
-                },
             ),
         }),
         on_dangling_item: () => abort(['too many arguments', null]),

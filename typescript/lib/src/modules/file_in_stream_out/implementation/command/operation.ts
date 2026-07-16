@@ -3,15 +3,14 @@ import * as p_i from 'pareto-core/interface/command_implementation'
 
 //schemas
 import type * as s_main from "../../schemas/main.js"
-import type * as s_file_to_file_command from "../../schemas/command.js"
+import type * as s_file_to_stream from "../../schemas/command.js"
 
 //dependencies
-import * as r_file_in_file_out_from_main from "../refiners/operation/main.js"
-import * as t_file_in_file_out_command_to_paragraph from "../transformations/operation/paragraph.js"
+import * as r_file_in_stream_out_from_main from "../refiners/operation/main.js"
+import * as t_file_in_stream_out_command_to_paragraph from "../transformers/command/paragraph.js"
 import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
 
 //interface dependencies
-import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/commands"
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/interface/commands"
 import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/interface/commands"
 import type * as query_interfaces from "../../interface/queries.js"
@@ -25,26 +24,26 @@ export const $$: p_i.Command_Implementation<
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
-        'process data': query_interfaces.operation,
+        'process data': query_interfaces.operation
     },
     {
-        'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
-        'log error lines': command_interfaces_pareto_stream_api.log_error_lines,
+        'log lines': command_interfaces_pareto_stream_api.log_lines
+        'log error lines': command_interfaces_pareto_stream_api.log_error_lines
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
 
-        p_.s.handle_error<s_main.Error, s_file_to_file_command.Error>(
+        p_.s.handle_error<s_main.Error, s_file_to_stream.Error>(
             [
 
                 p_.s.refine(
-                    (abort) => r_file_in_file_out_from_main.Parameters($d, ($) => abort(['command line arguments', $])),
+                    (abort) => r_file_in_stream_out_from_main.Parameters($d, ($) => abort(['command line arguments', $])),
                     ($r) => [
 
                         p_.s.query(
                             $q['read file'](
                                 $r.in,
-                                ($): s_file_to_file_command.Error => {
+                                ($): s_file_to_stream.Error => {
                                     return ['reading file', $]
                                 }
                             ),
@@ -56,28 +55,22 @@ export const $$: p_i.Command_Implementation<
                                             'path': $r.in,
                                             'data': $v.data,
                                         },
-                                        ($): s_file_to_file_command.Error => {
-                                            return ['processing', {
-                                                'message': $.message
-                                            }]
+                                        ($): s_file_to_stream.Error => {
+                                            return ['processing', $]
                                         }
                                     ),
                                     ($v) => [
-                                        $c['write file'].execute(
+                                        $c['log lines'].execute(
                                             {
-                                                'path': $r.out,
-                                                'content': {
-                                                    'newline': $s.newline,
-                                                    'lines': t_paragraph_to_serialized_paragraph.Paragraph(
-                                                        $v.paragraph,
-                                                        {
-                                                            'indentation': $s.indentation
-                                                        }
-                                                    )
-                                                }
+                                                'messages': t_paragraph_to_serialized_paragraph.Paragraph(
+                                                    $v.data,
+                                                    {
+                                                        'indentation': $s.indentation,
+                                                    }
+                                                )
                                             },
                                             ($) => {
-                                                return ['writing file', $]
+                                                return ['writing to stream', $]
                                             },
                                         )
                                     ],
@@ -92,7 +85,7 @@ export const $$: p_i.Command_Implementation<
                 $c['log error lines'].execute(
                     {
                         'messages': t_paragraph_to_serialized_paragraph.Phrase(
-                            t_file_in_file_out_command_to_paragraph.Error($),
+                            t_file_in_stream_out_command_to_paragraph.Error($),
                             {
                                 'indentation': $s.indentation
                             }

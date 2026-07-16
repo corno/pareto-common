@@ -1,7 +1,7 @@
 
-import type * as s_path from "../../../interface/schemas/fs_unrestricted_path.js"
-import type * as s_list_of_characters from "../../../interface/schemas/list_of_characters.js"
-import type * as p_paragraph from "../../../interface/schemas/paragraph.js"
+import type * as s_path from "./fs_unrestricted_path.js"
+import type * as s_list_of_characters from "./list_of_characters.js"
+import type * as p_paragraph from "./paragraph.js"
 
 
 export type Result = {
