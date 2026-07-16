@@ -6,7 +6,7 @@ import type * as s_out from "../../../interface/schemas/paragraph.js"
 
 //dependencies
 import * as t_file_in_stream_out_to_prose from "../../serializers/file_in_stream_out_refiner.js"
-import * as t_read_file from "pareto-filesystem-unrestricted-api/implementation/serializers/read_file"
+import * as t_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_file"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"

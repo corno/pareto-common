@@ -6,17 +6,17 @@ import type * as s_main from "../../interface/schemas/main.js"
 import type * as s_file_to_file_command from "../../interface/schemas/file_in_directory_out_command.js"
 
 //interface dependencies
-import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/commands"
+import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/commands"
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/interface/commands"
 import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/interface/commands"
 import type * as query_interfaces from "../../interface/queries.js"
-import type * as query_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/interface/queries"
+import type * as query_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/queries"
 
 //dependencies
 import * as r_file_in_directory_out_from_main from "../refiners/file_in_directory_out/main.js"
 import * as t_file_in_directory_out_command_to_paragraph from "../transformers/file_in_directory_out_command/paragraph.js"
 import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
-import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/implementation/commands/write_directory_content"
+import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/modules/helpers/implementation/commands/write_directory_content"
 
 
 export const $$: p_i.Command_Implementation<

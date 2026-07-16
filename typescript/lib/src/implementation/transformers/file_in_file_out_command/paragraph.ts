@@ -5,7 +5,7 @@ import type * as s_in from "../../../interface/schemas/file_in_file_out_command.
 import type * as s_out from "../../../interface/schemas/paragraph.js"
 
 //dependencies
-import * as ser_read_file from "pareto-filesystem-unrestricted-api/implementation/serializers/read_file"
+import * as ser_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_file"
 import * as ser_cli from "../../serializers/file_in_file_out_refiner.js"
 
 //shorthands

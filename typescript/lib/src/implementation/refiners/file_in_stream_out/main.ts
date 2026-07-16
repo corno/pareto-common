@@ -7,7 +7,7 @@ import type * as s_file_in_stream_out from "../../../interface/schemas/file_in_s
 import type * as s_main from "../../../interface/schemas/main.js"
 
 //dependencies
-import * as r_path_to_text from "pareto-filesystem-unrestricted-api/implementation/refiners/path_unrestricted/text"
+import * as deser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/deserializers/path"
 
 export const Parameters: p_i.Refiner<
     s_file_in_stream_out.Parameters,
@@ -22,7 +22,7 @@ export const Parameters: p_i.Refiner<
         list: $.arguments,
         end_info: null,
         assign: (iterator) => ({
-            'in': r_path_to_text.Node_Path(
+            'in': deser_path.Node_Path(
                 iterator.consume(
                     ($) => abort(['unexpected', {
                         'expected': ['source path', null]

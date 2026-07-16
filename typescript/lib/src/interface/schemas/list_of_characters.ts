@@ -1,1 +1,1 @@
-export * from "pareto-filesystem-unrestricted-api/interface/schemas/list_of_characters"
+export * from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/schemas/list_of_characters"
