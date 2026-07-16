@@ -1,12 +1,12 @@
 import * as p_ from 'pareto-core/implementation/transformer'
 
 //schemas
-import type * as s_in from "../../../interface/schemas/file_in_file_out_command.js"
-import type * as s_out from "../../../interface/schemas/paragraph.js"
+import type * as s_in from "../../../schemas/command.js"
+import type * as s_out from "../../../schemas/paragraph.js"
 
 //dependencies
 import * as ser_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_file"
-import * as ser_cli from "../../serializers/file_in_file_out_refiner.js"
+import * as ser_cli from "../../serializers/operation.js"
 
 //shorthands
 import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"

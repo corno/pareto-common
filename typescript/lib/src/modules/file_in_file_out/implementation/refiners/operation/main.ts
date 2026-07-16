@@ -4,10 +4,10 @@ import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
 
 
 //schemas
-import type * as s_out from "../../../interface/schemas/file_in_file_out_refiner.js"
+import type * as s_out from "../../../schemas/refiner.js"
 //schemas
-import type * as s_function from "../../../interface/schemas/file_in_file_out_refiner.js"
-import type * as s_in from "../../../interface/schemas/main.js"
+import type * as s_function from "../../../schemas/refiner.js"
+import type * as s_in from "../../../../../interface/schemas/main.js"
 
 export namespace declarations {
 

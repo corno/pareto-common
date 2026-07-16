@@ -2,19 +2,19 @@ import * as p_ from 'pareto-core/implementation/command'
 import * as p_i from 'pareto-core/interface/command_implementation'
 
 //schemas
-import type * as s_main from "../../interface/schemas/main.js"
-import type * as s_file_to_file_command from "../../interface/schemas/file_in_file_out_command.js"
+import type * as s_main from "../../schemas/main.js"
+import type * as s_file_to_file_command from "../../schemas/command.js"
 
 //dependencies
-import * as r_file_in_file_out_from_main from "../refiners/file_in_file_out/main.js"
-import * as t_file_in_file_out_command_to_paragraph from "../transformers/file_in_file_out_command/paragraph.js"
+import * as r_file_in_file_out_from_main from "../refiners/operation/main.js"
+import * as t_file_in_file_out_command_to_paragraph from "../transformations/operation/paragraph.js"
 import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
 
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/commands"
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/interface/commands"
 import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/interface/commands"
-import type * as query_interfaces from "../../interface/queries.js"
+import type * as query_interfaces from "../../../../interface/queries.js"
 import type * as query_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/queries"
 
 export const $$: p_i.Command_Implementation<

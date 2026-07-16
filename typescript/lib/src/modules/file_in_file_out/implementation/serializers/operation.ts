@@ -1,7 +1,7 @@
 import * as p_ from 'pareto-core/implementation/serializer'
 
 //schemas
-import type * as s_in from "../../interface/schemas/file_in_file_out_refiner.js"
+import type * as s_in from "../../schemas/refiner.js"
 
 namespace declarations {
     export type Error = p_.Serializer<s_in.Error>
