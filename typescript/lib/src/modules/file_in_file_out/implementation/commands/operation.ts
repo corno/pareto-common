@@ -67,13 +67,15 @@ export const $$: p_i.Command_Implementation<
                                             {
                                                 'path': $r.out,
                                                 'content': {
-                                                    'newline': $s.newline,
                                                     'lines': t_paragraph_to_serialized_paragraph.Paragraph(
                                                         $v.paragraph,
                                                         {
                                                             'indentation': $s.indentation
                                                         }
-                                                    )
+                                                    ),
+                                                    'parameters': {
+                                                        'newline': $s.newline
+                                                    }
                                                 }
                                             },
                                             ($) => {

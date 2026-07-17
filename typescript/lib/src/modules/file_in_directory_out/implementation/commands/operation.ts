@@ -22,7 +22,7 @@ import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-
 export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     {
-        'indentation': string
+        'error message indentation': string
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
@@ -91,7 +91,7 @@ export const $$: p_i.Command_Implementation<
                         'messages': t_paragraph_to_serialized_paragraph.Phrase(
                             t_file_in_directory_out_command_to_paragraph.Error($),
                             {
-                                'indentation': $s.indentation
+                                'indentation': $s['error message indentation']
                             }
                         ),
                     },
