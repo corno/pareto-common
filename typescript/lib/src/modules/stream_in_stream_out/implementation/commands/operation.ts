@@ -59,7 +59,7 @@ export const $$: p_i.Command_Implementation<
                             ($v) => [
                                 $c['log lines'].execute(
                                     {
-                                        'messages': t_paragraph_to_serialized_paragraph.Paragraph(
+                                        'lines': t_paragraph_to_serialized_paragraph.Paragraph(
                                             $v.paragraph,
                                             {
                                                 'indentation': $s.indentation
@@ -78,7 +78,7 @@ export const $$: p_i.Command_Implementation<
             ($) => [
                 $c['log error lines'].execute(
                     {
-                        'messages': t_paragraph_to_serialized_paragraph.Phrase(
+                        'lines': t_paragraph_to_serialized_paragraph.Phrase(
                             p_temp.from.state($).decide(
                                 ($): s_paragraph.Phrase => {
                                     switch ($[0]) {

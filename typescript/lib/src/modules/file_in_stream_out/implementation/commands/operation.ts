@@ -61,7 +61,7 @@ export const $$: p_i.Command_Implementation<
                                     ($v) => [
                                         $c['log lines'].execute(
                                             {
-                                                'messages': t_paragraph_to_serialized_paragraph.Paragraph(
+                                                'lines': t_paragraph_to_serialized_paragraph.Paragraph(
                                                     $v.data,
                                                     {
                                                         'indentation': $s.indentation,
@@ -83,7 +83,7 @@ export const $$: p_i.Command_Implementation<
             ($) => [
                 $c['log error lines'].execute(
                     {
-                        'messages': t_paragraph_to_serialized_paragraph.Phrase(
+                        'lines': t_paragraph_to_serialized_paragraph.Phrase(
                             t_file_in_stream_out_command_to_paragraph.Error($),
                             {
                                 'indentation': $s.indentation
