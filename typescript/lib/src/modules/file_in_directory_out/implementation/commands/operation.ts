@@ -23,6 +23,7 @@ export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     {
         'error message indentation': string
+        'remove before writing': boolean
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
@@ -31,6 +32,7 @@ export const $$: p_i.Command_Implementation<
     {
         'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
         'log error lines': command_interfaces_pareto_stream_api.log_error_lines,
+        'remove': command_interfaces_pareto_filesystem_unrestricted_api.remove,
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -63,10 +65,13 @@ export const $$: p_i.Command_Implementation<
                                     ),
                                     ($v) => [
                                         c_write_directory_content(
-                                            null,
+                                            {
+                                                'remove before writing': $s['remove before writing'],
+                                            },
                                             null,
                                             {
                                                 'write file': $c['write file'],
+                                                'remove': $c['remove'],
                                             }
                                         ).execute(
                                             {
