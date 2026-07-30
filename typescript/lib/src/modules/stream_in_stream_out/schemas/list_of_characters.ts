@@ -1,1 +1,0 @@
-export * from "pareto-stream-api/interface/schemas/list_of_characters"
