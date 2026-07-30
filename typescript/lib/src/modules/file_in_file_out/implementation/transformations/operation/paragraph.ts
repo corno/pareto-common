@@ -9,7 +9,7 @@ import * as ser_read_file from "pareto-filesystem-unrestricted-api/modules/unres
 import * as ser_cli from "../../serializers/operation.js"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/deprecated"
 
 export const Error: p_.Transformer<s_in.Error, s_out.Phrase> = ($) => {
     return p_.from.state($).decide(

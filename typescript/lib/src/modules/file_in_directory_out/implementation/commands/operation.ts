@@ -15,7 +15,7 @@ import type * as query_interfaces_pareto_filesystem_unrestricted_api from "paret
 //dependencies
 import * as r_file_in_directory_out_from_main from "../refiners/operation/main.js"
 import * as t_file_in_directory_out_command_to_paragraph from "../transformers/command/paragraph.js"
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
+import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/modules/paragraph/implementation/transformers/paragraph/serialized"
 import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/modules/helpers/implementation/commands/write_directory_content"
 
 

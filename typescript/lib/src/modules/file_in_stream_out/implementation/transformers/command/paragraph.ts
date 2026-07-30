@@ -9,7 +9,7 @@ import * as t_file_in_stream_out_to_prose from "../../serializers/refiner.js"
 import * as t_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/read_file"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/deprecated"
 
 export const Error: p_.Transformer<s_in.Error, s_out.Phrase> = ($) => {
     return p_.from.state($).decide(

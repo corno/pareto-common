@@ -8,7 +8,7 @@ import type * as s_file_to_file_command from "../../schemas/command.js"
 //dependencies
 import * as r_file_in_file_out_from_main from "../refiners/operation/main.js"
 import * as t_file_in_file_out_command_to_paragraph from "../transformations/operation/paragraph.js"
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
+import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/modules/paragraph/implementation/transformers/paragraph/serialized"
 
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/commands"

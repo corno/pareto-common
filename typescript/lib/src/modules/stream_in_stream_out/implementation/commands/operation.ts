@@ -10,13 +10,13 @@ import type * as query_interfaces_pareto_stream_api from "pareto-stream-api/inte
 //schemas
 import type * as s_main from "../../schemas/main.js"
 import type * as s_stream_to_stream from "../../schemas/command.js"
-import type * as s_paragraph from "pareto-fountain-pen/interface/schemas/paragraph"
+import type * as s_paragraph from "pareto-fountain-pen/modules/paragraph/schemas/paragraph"
 
 //dependencies
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/_implementation/transformers/paragraph/serialized"
+import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/modules/paragraph/implementation/transformers/paragraph/serialized"
 
 //shorthands
-import * as sh from "pareto-fountain-pen/shorthands/paragraph/deprecated"
+import * as sh from "pareto-fountain-pen/modules/paragraph/shorthands/deprecated"
 
 
 export const $$: p_i.Command_Implementation<
