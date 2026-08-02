@@ -5,7 +5,7 @@ import type * as s_in from "../schema.js"
 import type * as s_out from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/schema"
 
 //dependencies
-import * as t_file_in_stream_out_to_prose from "../serializers.js"
+import * as ser from "../serializers.js"
 import * as t_read_file from "pareto-filesystem-unrestricted-api/modules/unrestricted/schemas/read_file/serializers"
 
 //shorthands
@@ -21,7 +21,7 @@ export const Error: p_.Transformer<s_in.Error, s_out.Phrase> = ($) => {
                 ]))
                 case 'command line arguments': return p_.option($, ($) => sh.ph.composed([
                     sh.ph.text("error in command line arguments: "),
-                    sh.ph.text(t_file_in_stream_out_to_prose.Error($))
+                    sh.ph.text(ser.Error($))
                 ]))
                 case 'reading file': return p_.option($, ($) => sh.ph.composed([
                     sh.ph.text("error reading: "),
