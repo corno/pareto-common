@@ -82,9 +82,9 @@ export const $$: p_i.Command_Implementation<
                             p_temp.from.state($).decide(
                                 ($): s_paragraph.Phrase => {
                                     switch ($[0]) {
-                                        case 'could not read instream': return p_temp.ss($, ($) => sh.ph.text("could not read instream"))
-                                        case 'deserialization failed': return p_temp.ss($, ($) => $.message)
-                                        case 'could not write to stdout': return p_temp.ss($, ($) => sh.ph.text("could not write to stdout"))
+                                        case 'could not read instream': return p_temp.option($, ($) => sh.ph.text("could not read instream"))
+                                        case 'deserialization failed': return p_temp.option($, ($) => $.message)
+                                        case 'could not write to stdout': return p_temp.option($, ($) => sh.ph.text("could not write to stdout"))
                                         default: return p_temp.exhaustive($[0])
                                     }
                                 }
