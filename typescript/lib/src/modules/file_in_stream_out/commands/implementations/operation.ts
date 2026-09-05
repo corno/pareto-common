@@ -1,5 +1,5 @@
-import * as p_ from 'pareto-core/implementation/command'
-import * as p_i from 'pareto-core/interface/command_implementation'
+import * as p_ from 'pareto-core/command'
+import * as p_i from 'pareto-core/command_implementation'
 
 //schemas
 import type * as s_main from "pareto-application-api/schemas/main/schema"

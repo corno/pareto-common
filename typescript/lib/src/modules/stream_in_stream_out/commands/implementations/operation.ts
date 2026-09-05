@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core/implementation/command'
-import * as p_i from 'pareto-core/interface/command_implementation'
-import * as p_temp from 'pareto-core/implementation/transformer'
+import * as p_ from 'pareto-core/command'
+import * as p_i from 'pareto-core/command_implementation'
+import * as p_temp from 'pareto-core/transformer'
 
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/commands/interfaces"
 import type * as command_interfaces_pareto_stream_api from "pareto-stream-api/commands/interfaces"

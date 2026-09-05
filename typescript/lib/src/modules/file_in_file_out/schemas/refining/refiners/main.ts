@@ -1,6 +1,6 @@
-import * as p_ from 'pareto-core/implementation/refiner'
+import * as p_ from 'pareto-core/refiner'
 
-import p_iterate from 'pareto-core/implementation/refiner/specials/iterate'
+import p_iterate from 'pareto-core/refiner/specials/iterate'
 
 
 //schemas
