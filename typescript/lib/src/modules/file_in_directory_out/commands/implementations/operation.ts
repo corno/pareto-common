@@ -24,6 +24,7 @@ export const $$: p_i.Command_Implementation<
     {
         'error message indentation': string
         'remove before writing': boolean
+        'replace spaces in node names by underscores': boolean
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
@@ -67,6 +68,7 @@ export const $$: p_i.Command_Implementation<
                                         c_write_directory_content(
                                             {
                                                 'remove before writing': $s['remove before writing'],
+                                                'replace spaces in node names by underscores': $s['replace spaces in node names by underscores']
                                             },
                                             null,
                                             {
