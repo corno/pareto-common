@@ -8,7 +8,7 @@ import type * as s_file_to_stream from "../../schemas/command/schema.js"
 //dependencies
 import * as r_file_in_stream_out_from_main from "../../schemas/command/refiners/main.js"
 import * as t_file_in_stream_out_command_to_paragraph from "../../schemas/command/transformers/paragraph.js"
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/transformers/serialized"
+import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/shorthands/deprecated"
 
 //interface dependencies
 import type * as command_interfaces_pareto_application_api from "pareto-application-api/commands/interfaces"
@@ -20,14 +20,15 @@ export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     {
         'indentation': string
+        'newline': string
     },
     {
         'read file': query_interfaces_pareto_filesystem_unrestricted_api.read_file
         'process data': query_interfaces.operation
     },
     {
-        'log lines': command_interfaces_pareto_stream_api.log_lines
-        'log error lines': command_interfaces_pareto_stream_api.log_error_lines
+        'log paragraph': command_interfaces_pareto_stream_api.log_paragraph
+        'log error paragraph': command_interfaces_pareto_stream_api.log_error_paragraph
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -59,14 +60,11 @@ export const $$: p_i.Command_Implementation<
                                         }
                                     ),
                                     ($v) => [
-                                        $c['log lines'].execute(
+                                        $c['log paragraph'].execute(
                                             {
-                                                'lines': t_paragraph_to_serialized_paragraph.Paragraph(
-                                                    $v.data,
-                                                    {
-                                                        'indentation': $s.indentation,
-                                                    }
-                                                )
+                                                'paragraph': $v.data,
+                                                'indentation': $s.indentation,
+                                                'newline': $s.newline,
                                             },
                                             ($) => {
                                                 return ['writing to stream', $]
@@ -81,14 +79,11 @@ export const $$: p_i.Command_Implementation<
                 ),
             ],
             ($) => [
-                $c['log error lines'].execute(
+                $c['log error paragraph'].execute(
                     {
-                        'lines': t_paragraph_to_serialized_paragraph.Phrase(
-                            t_file_in_stream_out_command_to_paragraph.Error($),
-                            {
-                                'indentation': $s.indentation
-                            }
-                        ),
+                        'paragraph': sh.pg.sentences([sh.sentence([t_file_in_stream_out_command_to_paragraph.Error($)])]),
+                        'indentation': $s.indentation,
+                        'newline': $s.newline,
                     },
                     ($) => ({
                         'exit code': 2

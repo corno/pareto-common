@@ -15,7 +15,7 @@ import type * as query_interfaces_pareto_filesystem_unrestricted_api from "paret
 //dependencies
 import * as r_file_in_directory_out_from_main from "../../schemas/refining/refiners/main.js"
 import * as t_file_in_directory_out_command_to_paragraph from "../../schemas/command/transformers/paragraph.js"
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/transformers/serialized"
+import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/shorthands/deprecated"
 import { $$ as c_write_directory_content } from "pareto-filesystem-unrestricted-api/modules/helpers/commands/implementations/write_directory_content"
 
 
@@ -23,6 +23,7 @@ export const $$: p_i.Command_Implementation<
     command_interfaces_pareto_application_api.main,
     {
         'error message indentation': string
+        'error message newline': string
         'remove before writing': boolean
         'replace spaces in node names by underscores': boolean
     },
@@ -32,7 +33,7 @@ export const $$: p_i.Command_Implementation<
     },
     {
         'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
-        'log error lines': command_interfaces_pareto_stream_api.log_error_lines,
+        'log error paragraph': command_interfaces_pareto_stream_api.log_error_paragraph,
         'remove': command_interfaces_pareto_filesystem_unrestricted_api.remove,
     }
 > = p_.command(
@@ -93,14 +94,11 @@ export const $$: p_i.Command_Implementation<
                 ),
             ],
             ($) => [
-                $c['log error lines'].execute(
+                $c['log error paragraph'].execute(
                     {
-                        'lines': t_paragraph_to_serialized_paragraph.Phrase(
-                            t_file_in_directory_out_command_to_paragraph.Error($),
-                            {
-                                'indentation': $s['error message indentation']
-                            }
-                        ),
+                        'paragraph': sh.pg.sentences([sh.sentence([t_file_in_directory_out_command_to_paragraph.Error($)])]),
+                        'indentation': $s['error message indentation'],
+                        'newline': $s['error message newline'],
                     },
                     ($) => ({
                         'exit code': 2

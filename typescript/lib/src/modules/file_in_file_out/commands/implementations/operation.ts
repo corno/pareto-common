@@ -8,7 +8,7 @@ import type * as s_file_to_file_command from "../../schemas/command/schema.js"
 //dependencies
 import * as r_file_in_file_out_from_main from "../../schemas/refining/refiners/main.js"
 import * as t_file_in_file_out_command_to_paragraph from "../../schemas/command/transformers/paragraph.js"
-import * as t_paragraph_to_serialized_paragraph from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/transformers/serialized"
+import * as sh from "pareto-fountain-pen/modules/paragraph/schemas/paragraph/shorthands/deprecated"
 
 //interface dependencies
 import type * as command_interfaces_pareto_filesystem_unrestricted_api from "pareto-filesystem-unrestricted-api/modules/unrestricted/commands/interfaces"
@@ -29,7 +29,7 @@ export const $$: p_i.Command_Implementation<
     },
     {
         'write file': command_interfaces_pareto_filesystem_unrestricted_api.write_file,
-        'log error lines': command_interfaces_pareto_stream_api.log_error_lines,
+        'log error paragraph': command_interfaces_pareto_stream_api.log_error_paragraph,
     }
 > = p_.command(
     ($d, $s, $q, $c) => [
@@ -67,13 +67,9 @@ export const $$: p_i.Command_Implementation<
                                             {
                                                 'path': $r.out,
                                                 'content': {
-                                                    'lines': t_paragraph_to_serialized_paragraph.Paragraph(
-                                                        $v.paragraph,
-                                                        {
-                                                            'indentation': $s.indentation
-                                                        }
-                                                    ),
+                                                    'paragraph': $v.paragraph,
                                                     'parameters': {
+                                                        'indentation': $s.indentation,
                                                         'newline': $s.newline
                                                     }
                                                 }
@@ -91,14 +87,11 @@ export const $$: p_i.Command_Implementation<
                 ),
             ],
             ($) => [
-                $c['log error lines'].execute(
+                $c['log error paragraph'].execute(
                     {
-                        'lines': t_paragraph_to_serialized_paragraph.Phrase(
-                            t_file_in_file_out_command_to_paragraph.Error($),
-                            {
-                                'indentation': $s.indentation
-                            }
-                        ),
+                        'paragraph': sh.pg.sentences([sh.sentence([t_file_in_file_out_command_to_paragraph.Error($)])]),
+                        'indentation': $s.indentation,
+                        'newline': $s.newline,
                     },
                     ($) => ({
                         'exit code': 2
